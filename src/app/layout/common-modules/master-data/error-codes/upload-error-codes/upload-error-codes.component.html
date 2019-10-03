@@ -1,0 +1,36 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Upload Error Code File'" [icon]="'fa-edit'"></app-page-header>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <section class="tile">
+                        <div class="tile-body">
+                            <form *ngIf="upload" role="form" [formGroup]="upload" (ngSubmit)="Onsubmit()">
+                                <div class="form-content">
+                                    <br>
+                                    <div class="form-group col-md-6">
+                                        <label>Upload CSV / Excel File</label>
+                                        <span>{{File ? File.name : 'or drag and drop file here' }}</span>
+                                        <input class="form-control input-underline input-lg" type="file" name="File"
+                                            (change)="onFileChange($event)" accept=".xlsx, .xls" #fileInput required>
+                                        <br>
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="col-lg-8">
+                                    <button *ngIf="!isUpdate" [disabled]="!upload.valid" type="submit"
+                                        class="btn btn-success ">Upload</button>
+                                    <button *ngIf="isUpdate" type="submit" class="btn btn-success ">Update Parts
+                                    </button>
+                                    <button [disabled]="!upload.valid" type="reset" class="btn btn-warning ">Reset
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

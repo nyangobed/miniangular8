@@ -1,0 +1,135 @@
+<div [@routerTransition]>
+    <div class="page page-forms-wizard">
+        <app-page-header [heading]="'Create User Accounts'" [icon]="'fa-edit'" *ngIf="!isUpdate"></app-page-header>
+        <app-page-header [heading]="'Update Account'" [icon]="'fa-edit'" *ngIf="isUpdate"></app-page-header>
+
+        <section class="tile">
+            <button type="submit" mat-raised-button color="primary">
+                <a routerLink="javascript:void(0)" (click)="goBack()">Return </a>
+                <i class="fa fa-arrow-circle-left"></i>
+            </button>
+            <div class="tile-body">
+                <div class="row" *ngIf="isUpdate">
+                    <div class="col-lg-6"></div>
+                    <div class="col-lg-6">
+                        <button
+                            class="btn btn-sm btn-danger text-white pull-right btn-ef btn-ef-3 btn-ef-3c mb-10 mr-10"
+                            (click)="open(content, deactivateLabel)"
+                            *ngIf="model.status=='Active'">{{deactivateLabel}}</button>
+                        <button
+                            class="btn btn-sm btn-danger text-white pull-right btn-ef btn-ef-3 btn-ef-3c mb-10 mr-10"
+                            (click)="open(content, lockLabel)"
+                            *ngIf="model.passwordStatus=='Active'">{{lockLabel}}</button>
+                        <button class="btn btn-sm btn-info text-white pull-right btn-ef btn-ef-3 btn-ef-3c mb-10 mr-10"
+                            (click)="open(content, unlockLabel)"
+                            *ngIf="model.passwordStatus=='Locked'">{{unlockLabel}}</button>
+                        <button
+                            class="btn btn-sm btn-primary text-white pull-right btn-ef btn-ef-3 btn-ef-3c mb-10 mr-10"
+                            (click)="open(content, activateLabel)"
+                            *ngIf="model.status=='Inactive'">{{activateLabel}}</button>
+                        <button
+                            class="btn btn-sm btn-primary text-white pull-right btn-ef btn-ef-3 btn-ef-3c mb-10 mr-10"
+                            (click)="open(content, resetLabel)">{{resetLabel}}</button>
+                        <ng-template #content let-c="close" let-d="dismiss">
+                            <form (ngSubmit)="approve(checkerForm)" #checkerForm="ngForm" role="form">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">{{checkerActions.action}} Actions</h4>
+                                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <fieldset class="form-group">
+                                        <label>Notes</label>
+                                        <textarea name="notes" class="form-control" maxlength="500" required="" rows="3"
+                                            [(ngModel)]="checkerActions.notes"></textarea>
+                                    </fieldset>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        (click)="c('Close click')">Close</button>
+                                    <button type="submit" [disabled]="!checkerForm.form.valid"
+                                        class="btn btn-success">{{checkerActions.action}}</button>
+                                </div>
+                            </form>
+                        </ng-template>
+                    </div>
+                </div>
+                <form (ngSubmit)="onCreateUser(createForm)" #createForm="ngForm" role="form">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="firstName">First Name: </label>
+                            <input type="text" id="firstName" name="firstName" [(ngModel)]="firstName"
+                                class="form-control" pattern="[a-zA-Z ]*" required="required">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lastName">Last Name </label>
+                            <input type="text" name="lastName" [(ngModel)]="lastName" id="lastName" class="form-control"
+                                required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Email Address</label>
+                            <input [(ngModel)]="model.email" type="email" name="email"
+                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control"
+                                #email="ngModel" required="required" />
+                            <div *ngIf="email.errors?.required && email.touched" class="validation-error">
+                                Field is required</div>
+                            <div *ngIf="email.errors?.pattern && email.touched" class="validation-error">
+                                Please enter a valid email</div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Phone Number</label>
+                            <input type="tel" pattern="^[0-9\-\+\s\(\)]*$" maxlength="13" minlength="10"
+                                [(ngModel)]="model.phoneNumber" name="msisdn" class="form-control"
+                                #phoneNumber="ngModel" required="required" />
+                            <div *ngIf="phoneNumber.errors?.required && phoneNumber.touched" class="validation-error">
+                                Field is required</div>
+                            <div *ngIf="phoneNumber.errors?.pattern && phoneNumber.touched" class="validation-error">
+                                Please enter a valid Phone Number</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Gender</label>
+                            <select [(ngModel)]="model.genderId" name="gender" placeholder="Select Gender"
+                                class="form-control" required>
+                                <option *ngFor="let gen of gender" value="{{gen.genderId}}">{{gen.gender}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>User Type</label>
+                            <select [(ngModel)]="model.userTypeId" name="userTypeId" placeholder="Select User Type"
+                                class="form-control" required>
+                                <option *ngFor="let type of userType" value="{{type.typeId}}">{{type.userType}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label>User Roles</label>
+                        <div class="form-group">
+                            <div class="col-md-4 col-4 " *ngFor="let role of systemRoles">
+                                <label *ngIf="role.actionStatus==='Approved'">
+                                    <input type="checkbox" value="{{role.groupId}}" [(ngModel)]="role.checked"
+                                        [name]="role.groupName"> {{role.groupName}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class=" col-md-12">
+                            <button [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success  pull-left mb-3  btn-round" *ngIf="!isUpdate">Create
+                                User</button>
+                            <button [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success  pull-left mb-3  btn-round" *ngIf="isUpdate">Update User</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

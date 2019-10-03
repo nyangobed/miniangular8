@@ -1,0 +1,39 @@
+<div [@routerTransition]>
+    <app-page-header *ngIf="!isUpdate" [heading]="'Create Business Unit'" [icon]="'fa-edit'"></app-page-header>
+    <app-page-header *ngIf="isUpdate" [heading]="'Update Business Unit'" [icon]="'fa-edit'"></app-page-header>
+    <form-wizard (onStepChanged)="onStepChanged($event)">
+        <wizard-step [title]="'Select Product'" [isValid]="emailForm.form.valid" (onNext)="onStep1Next($event)" [hidden]="isUpdate">
+            <p class="lead">Select Product</p>
+            <form #emailForm="ngForm">
+                <div class="row">
+                    <mat-form-field class="col-lg-6 col-md-6">
+                        <mat-select placeholder="Select Products" [(ngModel)]="selectedValue" name="product" required>
+                            <mat-option *ngFor="let product of products" [value]="product.productId">{{ product.productName }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </form>
+        </wizard-step>
+        <wizard-step [title]="'Unit Item'" [isValid]="unitForm.form.valid" [showNext]="step2.showNext" [showPrev]="step2.showPrev" (onNext)="onStep2Next($event)">
+            <p class="lead">Create Unit Item</p>
+            <form #unitForm="ngForm">
+                <div class="row">
+                    <mat-form-field class="col-lg-6 col-md-6">
+                        <input matInput placeholder="Unit Name" name="unitName" id="unitName" [(ngModel)]="model.unitName" required/>
+                    </mat-form-field>
+                </div>            
+            </form>
+        </wizard-step>    
+        <wizard-step [title]="'Complete'" (onComplete)="onComplete($event)">
+            <div [ngSwitch]="isCompleted">
+                <div *ngSwitchDefault>
+                    <app-viewentity [viewparam]="viewparam" [title]="'Confirm Details'" [subtitle]="model.unitName"></app-viewentity>
+                </div>
+                <div *ngSwitchCase="true">
+                    <h4>Business Unit Successfully Set</h4>
+                </div>
+            </div>
+        </wizard-step>
+    </form-wizard>
+
+</div>

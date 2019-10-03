@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-12">
+        <form (ngSubmit)="onSubmit(assignForm)" #assignForm="ngForm"  role="form">
+            <h4 mat-dialog-title>{{assignLabel}}</h4>
+            <mat-dialog-content>
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Technicians</mat-label>
+                    <mat-select name="users" class="form-control input-underline input-md"
+                            [(ngModel)]="assignActions.repairModel" id="users">
+                        <mat-option value={{users.userId}} *ngFor="let users of user">
+                            {{users.fullName}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </mat-dialog-content>
+            <mat-dialog-actions style="width: 100%;">
+                <button type="button" class="btn btn-secondary mr-10" mat-dialog-close>Close</button>
+                <button type="submit" [disabled]="!assignForm.form.valid" class="btn btn-success">{{assignLabel}}</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+</div>

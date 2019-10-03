@@ -1,0 +1,25 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Audit Trail'" [icon]="'fa-check-square'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <ng-template #content let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Audit Trail Details</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <app-modal-view-entity [viewparam]="viewparam" [title]="'Audit Trail'"></app-modal-view-entity>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+                    </div>
+                </ng-template>
+                <!-- <app-export-data [endpoint]="'atlas/audit-logs'"></app-export-data> -->
+                <table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
+            </div>
+        </section>
+    </div>
+</div>

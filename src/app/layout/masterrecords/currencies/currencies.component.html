@@ -1,0 +1,29 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Currencies'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <app-delete-component [addLabel]="'Add Currencies'"
+                                      [addLink]="'masterrecords/createcurrency'"
+                                      [approveLabel]="'Approve Currencies'"
+                                      [approveLink]="'masterrecords/approvecurrency'"
+                                      [deleteLabel]="'Delete Currencies'"
+                                      [endpoint]="'currencies'"></app-delete-component>
+                <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                       <thead>
+                        <tr>
+                            <th class="select-checkbox" style="text-align :center"><input type="checkbox" class="select-all-checkbox border-#{000000}" /></th>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th>Symbol</th>
+                            <th>Code Name</th>
+                            <th>Decimal Value</th>
+                            <th>Numeric Value</th>
+                            <th>Action Status</th>
+                            <th></th>
+                        </tr>
+                    </thead></table>
+            </div>
+        </section>
+    </div>
+</div>

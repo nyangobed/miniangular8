@@ -1,0 +1,42 @@
+<div [@routerTransition]>
+  <div class="page page-forms-wizard">
+      <app-page-header [heading]="'Stock Management'" [icon]="'fa-edit'"></app-page-header>
+      <section class="tile">
+          <div class="tile-body">
+                  <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" >
+                  <a routerLink="javascript:void(0)" (click)="goBack()">back </a>
+                  </button>
+                
+              <app-delete-component [addLabel]="'Add Stock'"
+                  [addLink]="'/trcm-lab-automation/parts/createstock'"
+                  [approveLabel]="'Approve Stock'"
+                  [approveLink]="'/trcm-lab-automation/parts/approvestock'"
+                  [deleteLabel]="'Delete Stock'" 
+                  [endpoint]="'atlas/stocks'">
+               </app-delete-component>
+                      <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered row-border hover" style="width:100%">
+                        
+                  <thead>
+                      <tr>      
+                          <th class="select-checkbox" style="text-align :center"><input type="checkbox"
+                          class="select-all-checkbox border-#{000000}" /></th>
+                          <th>Part Number</th>
+                          <th>Opening Stock</th>
+                          <th>Minimum Limit</th>
+                          <th>Maximum Limit</th>  
+                          <th>Available Stock</th>
+                          <th>Stock In</th>                      
+                          <th>Issued Parts</th>                    
+                          <th>In Trash</th>
+                          <th>Action </th>
+                          <th>Action Status</th>
+                      </tr>
+                  </thead>
+              </table>
+          </div>
+      </section>
+  </div>
+</div>
+
+
+

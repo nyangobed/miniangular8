@@ -1,0 +1,42 @@
+<div [@routerTransition]>
+  <div class="page page-dashboard">
+      <app-page-header [heading]="'Tools'" [icon]="'fa-edit'" >
+      </app-page-header>
+      <section class="tile">
+          <div class="tile-body">   
+
+  <app-delete-component
+              [addLabel]="'Add Tools'"
+              [addLink]="'/trcm-lab-automation/parts/tools-onboarding'"
+              [addLink]="'master-data/bank-regions/create-bank-regions'"
+              [approveLabel]="'Approve Tools'"
+              [approveLink]="'/trcm-lab-automation/parts/approve-parts'"
+              [deleteLabel]="'Delete Tools'"
+              [endpoint]="'atlas/parts'">
+</app-delete-component>
+              <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                      <thead>
+                      <tr>
+                            <th class="select-checkbox" style="text-align :center"><input type="checkbox"
+                                class="select-all-checkbox border-#{000000}"/>
+                             </th>
+                             <!-- <th>Part ID</th> -->
+                              <th>Part Name</th>
+                              <th>Part Model</th>
+                              <th>Part Number</th>
+                              <th>Part Description</th>
+                              <!-- <th>Quantity</th> -->
+                              <th>Action</th>
+                              <th>Action Status</th>
+                              <!-- <th>InTrash</th> -->
+                              <th>Manufacturer</th>
+                          </tr>
+                          </thead>
+              </table>
+            </div>
+         
+        </section>  
+      </div>
+</div>
+
+

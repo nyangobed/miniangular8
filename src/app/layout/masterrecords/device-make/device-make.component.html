@@ -1,0 +1,35 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Device Manufacturer'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+            <form (ngSubmit)="save(makeForm)" #makeForm="ngForm" role="form">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="Manufacturer">Manufacturer </label>
+                            <input name="make" placeholder="Manufacturer" id="make" required="" [(ngModel)]="model.make" #make="ngModel" class="form-control"/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="vendorName">Vendor Name </label>
+                            <input placeholder="Vendor Name" name="vendorName" id="vendorName" required="" [(ngModel)]="model.vendorName" type="text" #vendorName="ngModel" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="Description">Description </label>
+                            <textarea placeholder="Description" rows="3" name="description" id="description" [(ngModel)]="model.description" type="text" #description="ngModel" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <div class="row">
+                    <div class="btn-group pull-right mr-20">
+                        <button type="reset" class="btn btn-default">Reset</button> 
+                        <button [disabled]="!makeForm.form.valid" type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </section>
+    </div>
+</div>

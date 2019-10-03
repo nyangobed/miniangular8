@@ -1,0 +1,28 @@
+<div [@routerTransition]>    
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Add Simcard MNO'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Simcard MNO'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body"> 
+                <div  class="row">
+                    <form (ngSubmit)="onCreateMNO(createForm)" #createForm="ngForm" role="form">
+                        <mat-form-field class="col-lg-12">
+                            <label>MNO Name</label>
+                            <input matInput [(ngModel)]="model.mnoName" type="text" name="mnoName" required="required"/>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-lg-12">
+                            <label>MNO Description</label>
+                            <textarea rows="3" matInput [(ngModel)]="model.description" name="description" required="required"></textarea>
+                        </mat-form-field>
+
+                        <div class="col-lg-12">
+                            <button *ngIf="!isUpdate" [disabled]="!createForm.form.valid" type="submit" class="btn btn-success pull-right">Save Provider</button>
+                            <button *ngIf="isUpdate" [disabled]="!createForm.form.valid" type="submit" class="btn btn-success pull-right">Update Provider</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

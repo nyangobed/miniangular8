@@ -1,0 +1,121 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+
+// Define the default theme (same as the example above).
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent);
+
+// Include the default theme styles.
+@include angular-material-theme($candy-app-theme);
+
+
+// Define an alternate dark theme.
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+// Include the alternative theme styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+
+.unicorn-dark-theme {
+    @include angular-material-theme($dark-theme);
+}
+
+.pointer {
+    cursor: pointer;
+}
+.example-tooltip-host {
+    display: inline-flex;
+    align-items: center;
+}
+.mat-radio-outer-circle{
+    border-color: #0a6aa1;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #0a6aa1;
+}
+.mat-accent{
+    color:#942a25;
+    font-weight: bold;
+}
+.material-icons.color_beige { color: #eecbad; }
+.material-icons.color_white { color: #FFFFFF; }
+.mat-radio-button ~ .mat-radio-button {
+    padding-right: 16px;
+}
+
+.show{
+    display: block !important;
+}
+
+.dropdown, .dropup{
+    position: relative;
+}
+
+.selected-container-item {
+    height: 40px !important;
+    background: #666666;
+    z-index: 999;
+}
+.selected-container-item:after {
+    font-family: 'FontAwesome';
+    color:black;
+    float: right;
+    position: relative;
+    right: 5px;
+    content: "\f0d7";
+}
+
+.selected-container-text{
+    height: 40px !important;
+    background: #666666;
+    z-index: 999;
+}
+
+.selected-container-text:after{
+    font-family: 'FontAwesome';
+    color:black;
+    float: right;
+    position: relative;
+    right: 5px;
+    content: "\f0d7";
+}
+
+.dropdown-menu {
+    position: relative;
+}
+
+body {
+    font-family: 'Baskerville Regular', arial;
+    font-size: 15px;
+}
+
+$foreground: map-get($dark-theme, foreground);
+$background: map-get($dark-theme, background);
+
+// Apply theme for this app
+
+// NGX Charts
+[ngx-charts-axis-label] text {
+    fill: mat-color($foreground, secondary-text);
+}
+.tick text {
+    fill: mat-color($foreground, disabled);
+}
+.gridline-path {
+    &.gridline-path-horizontal,
+    &.gridline-path-vertical {
+        stroke: rgba(black, 0.06);
+    }
+}
+.legend-title-text {
+    color: mat-color($foreground, secondary-text);
+}

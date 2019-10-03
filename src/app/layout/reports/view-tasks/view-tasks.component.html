@@ -1,0 +1,27 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'View Tasks'" [icon]="'fa-check-square'"></app-page-header>
+    <mat-card>      
+        <app-viewentity [viewparam]="viewparam"></app-viewentity>
+        <hr class="mb-3"/>
+        <h5>Tasks</h5>
+        <hr class="mb-3"/>
+        <table datatable [dtOptions]="dtOptionsDeviceTasks" class="row-border hover">
+               <thead>
+                <tr>
+                    <th>Task ID</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of model.tmsDeviceTaskList">
+                    <td>{{ task.taskId }}</td>
+                    <td>{{ task.startDownloadTime }}</td>
+                    <td>{{ task.endDownloadTime }}</td>
+                    <td>{{ task.downloadStatus }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card>
+</div>

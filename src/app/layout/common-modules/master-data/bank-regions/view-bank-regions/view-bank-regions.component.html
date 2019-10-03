@@ -1,0 +1,10 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'View Bank Region'" [icon]="'fa-eye'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body row">
+                <app-viewentity [viewparam]="viewparam" [title]="'Bank Region View'" [subtitle]="model.branchName"></app-viewentity>
+            </div>
+        </section>
+    </div>
+</div>

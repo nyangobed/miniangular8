@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-12">
+        <form (ngSubmit)="processRelease(releaseForm)" #releaseForm="ngForm"  role="form">
+            <h4 mat-dialog-title>Release Devices</h4>
+            <mat-dialog-content  style="width: 100%;">
+                <!--<label>Reason for release</label> <br/>-->
+                <mat-radio-group [(ngModel)]="model.status" name="releaseStatus">
+                    <mat-radio-button class="checked" value="Repair">Release for repair</mat-radio-button> 
+                    <mat-radio-button value="Reallocate">Release for re-allocation</mat-radio-button>
+                </mat-radio-group>
+                <mat-form-field class="form-group col-lg-12 col-md-12">
+                    <textarea matInput placeholder="Notes" name="notes" maxlength="500" required="" rows="3" [(ngModel)]="model.notes"></textarea>
+                </mat-form-field>
+            </mat-dialog-content>
+            <mat-dialog-actions style="width: 100%;">
+                <button type="button" class="btn btn-secondary mr-20" mat-dialog-close>Close</button>
+                <button type="submit" [disabled]="!releaseForm.form.valid" class="btn btn-success">Release</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+</div>

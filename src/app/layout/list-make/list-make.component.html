@@ -1,0 +1,29 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Manufacturers'" [icon]="'fa-check-square'"></app-page-header>
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <app-maker-actions [dtOptions] = "dtOptions"   [addLink] = "'masterrecords/device-make'"  [approveLabel]="'Approve Manufacturer'" [approveLink]="'masterrecords/device-make/approve'"
+                    [addLabel] = "'Add Manufacturer'" [endpoint] = "'device/make'" [deleteLabel] = "'Delete Manufacturer'"
+                    [actionEndpoint] = "'masterrecords/device-make'"></app-maker-actions>
+            </div>
+            <div class="tile-body">
+                <table id="list-make-table" #makeTable datatable [dtOptions]="dtOptions" class="row-border hover">
+                       <thead>
+                        <tr>
+                            <th class="select-checkbox" style="text-align :center"><input type="checkbox" class="select-all-checkbox border-#{000000}" /></th>
+                            <th>Manufacturer</th>
+                            <th>Vendor</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                            <th>Action Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

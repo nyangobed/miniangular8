@@ -1,0 +1,51 @@
+<div [@routerTransition]>
+    <div class="page page-forms-wizard">
+        <app-page-header [heading]="'Device Model'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <form (ngSubmit)="save(modelForm)" #modelForm="ngForm" role="form">
+                    <div class="row">
+                        <mat-form-field class="col-md-6">
+                            <label for="Manufacturer">Manufacturer </label>
+                            <mat-select [(value)]="model.makeId" placeholder="Manufacturer" required="">
+                                <mat-option  *ngFor="let make of makes" [value]="make.makeId">{{make.make}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-6">
+                            <label for="Type">Type </label>
+                            <mat-select [(value)]="model.deviceTypeId" placeholder="Type" required="">
+                                <mat-option  *ngFor="let type of types" [value]="type.deviceTypeId">{{type.type}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="Model">Model </label>
+                            <input placeholder="Model" maxlength="100" name="model" id="model" required="" [(ngModel)]="model.model" #type="ngModel" class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Description">Description: </label>
+                            <textarea placeholder="Description" maxlength="500" name="description" rows="4" id="description" [(ngModel)]="model.description" #type="ngModel"  class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <!--<div class="row">
+                        <mat-form-field class="col-md-6">
+                            <label>Extension Type </label>
+                            <mat-select [(value)]="model.pFileExt" placeholder="Extension Type" required="">
+                                <mat-option  [value]="'.txt'">.TXT</mat-option>
+                                <mat-option  [value]="'.PAR'">.PAR</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>-->
+                    <div class="row">
+                        <div class="btn-group pull-right mr-20">
+                            <button type="reset" class="btn btn-default">Reset</button>
+                            <button [disabled]="!modelForm.form.valid" type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

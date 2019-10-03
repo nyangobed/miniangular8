@@ -1,0 +1,14 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Approve Units'" [icon]="'fa-edit'"></app-page-header>
+    <mat-card>
+        <div class="row">
+            <mat-form-field class="col-lg-6 col-md-6">
+                <mat-select placeholder="Select Products" [(ngModel)]="selectedValue" name="product" [ngModelOptions]="{standalone: true}" (change)="updateContent()" required>
+                            <mat-option *ngFor="let product of products" [value]="product.productId">{{ product.productName }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <app-checker-actions [endpoint]="'business-units'"></app-checker-actions>
+        <table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
+    </mat-card>
+</div>

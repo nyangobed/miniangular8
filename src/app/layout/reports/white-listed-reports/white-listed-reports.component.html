@@ -1,0 +1,23 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Devices Whitelist (Shipped)'" [icon]="'fa-check-square'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">            
+                <table id="list-make-table" #makeTable datatable [dtOptions]="dtOptions" class="table table-custom dt-responsive">
+                       <thead>
+                        <tr>
+                            <th></th>
+                            <th>Serial Number</th>
+                            <th>Model</th>
+                            <th>Action</th>
+                            <th>Action Status</th>
+                            <th>Creation Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

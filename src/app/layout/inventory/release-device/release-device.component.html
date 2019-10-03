@@ -1,0 +1,46 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Release Devices'" [icon]="'fa-check-square'"></app-page-header>
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <div class="row">
+                    <div class="col-lg-6">            
+                    </div>
+                    <div class="col-lg-6">
+                        <button [disabled] = "(model.ids?.length == 0)" class="btn btn-success btn-ef btn-ef-3 btn-ef-3c mb-10 mr-20 pull-right" (click)="open(releaseContent)">Release<i class="fa fa-adjust"></i></button>
+                    </div>
+                </div> 
+            </div>
+            <div class="tile-body">
+                <app-devices-listing></app-devices-listing>
+                <ng-template #releaseContent let-c="close" let-d="dismiss">
+
+                    <form (ngSubmit)="processRelease(releaseForm)" #releaseForm="ngForm"  role="form">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Release Devices</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!--<label>Reason for release</label> <br/>-->
+                            <mat-radio-group [(ngModel)]="model.status" name="releaseStatus">
+                                <mat-radio-button class="checked" value="Repair">Release for repair</mat-radio-button> 
+                                <mat-radio-button value="Reallocate">Release for re-allocation</mat-radio-button>
+                            </mat-radio-group>
+                            <mat-form-field class="form-group col-lg-12 col-md-12">
+                                <textarea matInput placeholder="Notes" name="notes" maxlength="500" required="" rows="3" [(ngModel)]="model.notes"></textarea>
+                            </mat-form-field>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+                            <button type="submit" [disabled]="!releaseForm.form.valid" class="btn btn-success">Release</button>
+                        </div>
+                    </form>
+                </ng-template>
+            </div>
+        </section>
+    </div>
+</div>
+

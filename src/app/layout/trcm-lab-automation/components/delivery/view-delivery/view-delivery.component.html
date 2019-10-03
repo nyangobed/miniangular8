@@ -1,0 +1,54 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="isUpdate" [heading]="'Update'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <div class="container" style="width: 100%">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                <div class="form-content row">
+                                    <div class="form-group col-md-6">
+                                        <label>Delivery Status</label>
+                                        <select class="form-control input-underline input-lg"
+                                            formControlName="deliveryStatus">
+                                            <option value="">--</option>
+                                            <option value="{{ delivery }}" *ngFor="
+                                                                    let delivery of deliveryStat
+                                                                ">{{ delivery }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Location</label>
+                                        <input type="text" formControlName="location"
+                                            class="form-control input-underline input-lg" id="location"
+                                            placeholder="Add the delivery location"
+                                            style="border-style:outset; border-radius: 4px;" />
+                                    </div>
+                                    <br>
+                                    <div class="form-group col-md-6">
+                                        <label>Delivered By</label>
+                                        <input type="text" formControlName="deliveredBy"
+                                            class="form-control input-underline input-lg" id="deliveredBy"
+                                            placeholder="Add the Person who delivered"
+                                            style="border-style:outset; border-radius: 4px;" />
+                                    </div>
+                                    <div class="col-md-12 pull-right">
+                                        <button type="submit" *ngIf="isUpdate" mat-raised-button color="primary"
+                                            [disabled]="myForm.invalid">
+                                            Update
+                                        </button>
+                                        <button type="reset" mat-raised-button color="warn" [disabled]="myForm.invalid">
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+nput.ng-touched.ng-invalid{
+    border-color: #dc3545;
+ }
+ div.validation-error{
+    width:100%;
+    margin-top: .25rem;
+    font-size:80%;
+    color: #dc3545;
+ }

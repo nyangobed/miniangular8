@@ -1,0 +1,111 @@
+<div class="container-fluid" [@routerTransition]>
+    <div class="row">
+
+        <div class="column card text-white bg-info mb-3 allign" style="max-width: 14rem; max-height: 18rem;">
+            <a routerLink="/trcm-lab-automation/onboarding/device-onboarding">
+                <div class="card-body">
+                    <h3>{{ dashTotal[0] }}</h3>
+                    <h4>
+                        <span>Onboarded Devices</span>
+                    </h4>
+                </div>
+            </a>
+        </div>
+
+        <div class="column card text-white bg-danger mb-3 allign" style="max-width: 14rem; max-height: 18rem;">
+            <a routerLink="/trcm-lab-automation/components/receiving">
+                <div class="card-body">
+                    <h3>{{ dashTotal[3] }}</h3>
+                    <h4>
+                        <span>Received</span>
+                    </h4>
+                </div>
+            </a>
+        </div>
+        <div class="column card text-white bg-warning mb-3 allign" style="max-width: 14rem; max-height: 18rem;">
+            <a routerLink="/trcm-lab-automation/components/shipped">
+                <div class="card-body">
+                    <h3>{{ dashTotal[4] }}</h3>
+                    <h4>
+                        <span>Shipped Devices</span>
+                    </h4>
+                </div>
+            </a>
+        </div>
+        <div class="column card text-white bg-success mb-3 allign" style="max-width: 14rem; max-height: 18rem;">
+            <a routerLink="/trcm-lab-automation/components/repair">
+                <div class="card-body">
+                    <h3>{{ dashTotal[2] }}</h3>
+                    <h4>
+                        <span>Repaired</span>
+                    </h4>
+                </div>
+            </a>
+        </div>
+        <div class="column card text-white bg-primary mb-3 allign" style="max-width: 14rem; max-height: 18rem;">
+            <a routerLink="/trcm-lab-automation/components/delivery">
+                <div class="card-body">
+                    <h3>{{ dashTotal[1] }}</h3>
+                    <h4>
+                        <span>Delivered</span>
+                    </h4>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<section class="content">
+    <div class="row2">
+        <!-- Expansion panel showing terminal repair level -->
+        <mat-expansion-panel class="column2" [disabled]="true" [expanded]="true" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Terminal Repair Level
+                </mat-panel-title>
+                <mat-panel-description>
+                    Highlights all the terminals based on repair level.
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-card>
+                <mat-card-content>
+                    <canvas id="canvas-pie">{{chart}}</canvas>
+                </mat-card-content>
+            </mat-card>
+        </mat-expansion-panel>
+        <!-- Expansion panel showing terminal repair Processes -->
+        <mat-expansion-panel class="column2" [disabled]="true" [expanded]="true" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Repair Processes
+                </mat-panel-title>
+                <mat-panel-description>
+                    View the repair processes.
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-card>
+                <mat-card-content>
+                    <canvas id="canvas-line">{{chart}}</canvas>
+                </mat-card-content>
+            </mat-card>
+        </mat-expansion-panel>
+    </div>
+    <div class="row2">
+        <mat-expansion-panel class="column2" [disabled]="true" [expanded]="true" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Repair Centre
+                </mat-panel-title>
+                <mat-panel-description>
+                    Shows the number of terminals for individual clients in various repair centres.
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-card>
+                <mat-card-content>
+                    <canvas id="canvas">{{chart}}</canvas>
+                </mat-card-content>
+            </mat-card>
+        </mat-expansion-panel>
+    </div>
+</section>

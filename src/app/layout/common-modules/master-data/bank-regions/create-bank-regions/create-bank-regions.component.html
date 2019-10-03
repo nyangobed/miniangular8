@@ -1,0 +1,39 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Add Bank Region'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Bank Region'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <a routerLink="javascript:void(0)" (click)="goBack()">
+                <button type="submit" mat-raised-button color="primary">Return</button>
+            </a>
+            <div class="tile-body">
+                <form (ngSubmit)="onCreateBankRegions(createForm)" #createForm="ngForm" role="form">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Bank Region Branch Name</label>
+                            <input class="form-control " [(ngModel)]="model.branchName" type="text" name="branchName"
+                                required="required" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Bank Region Code </label>
+                            <input class="form-control borders" type="text" [(ngModel)]="model.code" name="code"
+                                required="required" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="pull-right">
+                            <button *ngIf="!isUpdate" [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success">Save Bank Region
+                            </button>
+                            <button *ngIf="isUpdate" [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success">Update Bank Region
+                            </button>
+                            <button [disabled]="!createForm.form.valid" type="reset" class="btn btn-warning">Reset
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

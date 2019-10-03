@@ -1,0 +1,544 @@
+<div [@routerTransition]>
+    <div class="page page-forms-wizard">
+        <app-page-header [heading]="'Onboarding a device'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <div id="rootwizard" class="tab-container tab-wizard">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li><a href="#tab1" data-toggle="tab">Customer Information<span
+                            class="badge badge-default pull-right wizard-step">1</span></a></li>
+                        <li><a href="#tab2" data-toggle="tab">Assign Device<span
+                            class="badge badge-default pull-right wizard-step">2</span></a></li>
+                        <li><a href="#tab3" data-toggle="tab">Select Estate<span
+                            class="badge badge-default pull-right wizard-step">3</span></a></li>
+                        <li><a href="#tab4" data-toggle="tab">Additional Files<span
+                            class="badge badge-default pull-right wizard-step">4</span></a></li>
+                        <li><a href="#tab5" data-toggle="tab">Confirm Details<span
+                            class="badge badge-default pull-right wizard-step">5</span></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="tab1">
+                            <form name="step1" role="form" novalidate [formGroup]="myForm"
+                                  (ngSubmit)="saveDeviceCustomer(myForm)">
+                                <div class="row">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <label for="merchantId"
+                                                           class="col-sm-3 control-label">Merchant Reference : </label>
+                                                    <div class="col-sm-7">
+                                                        <input type="tel" class="form-control"
+                                                               formControlName="merchantReference"
+                                                               name="merchantReference"
+                                                               [(ngModel)]="deviceCustomer.merchantReference"
+                                                               id="merchantId" placeholder="Merchant Reference "
+                                                               required>
+                                                    </div>
+                                                    <span class="btn btn-default col-sm-2" (click)="searchMerchant()"><i
+                                                        class="fa fa-search"></i> Search
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- col -->
+                                    <div class="col-md-6">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title custom-font"><strong>Merchant </strong>Details
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row mb-10">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="merchantName"
+                                                                   class="col-sm-4 control-label">Merchant Name</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control"
+                                                                       id="merchantName"
+                                                                       formControlName="merchantName"
+                                                                       name="merchantName"
+                                                                       [(ngModel)]="deviceCustomer.merchantName"
+                                                                       placeholder="Merchant Name" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row  mb-10">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <label for="outletNumber"
+                                                                   class="col-sm-4 control-label">Outlet Number</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control"
+                                                                       id="outletNumber"
+                                                                       formControlName="outletNumber"
+                                                                       name="outletNumber"
+                                                                       [(ngModel)]="deviceCustomer.outletNumber"
+                                                                       placeholder="Outlet Number">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-10">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="address"
+                                                                   class="col-sm-4 control-label">Address</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" id="address"
+                                                                       formControlName="address" name="address"
+                                                                       [(ngModel)]="deviceCustomer.address"
+                                                                       placeholder="Address">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-10">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="location"
+                                                                   class="col-sm-4 control-label">Location</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" id="location"
+                                                                       formControlName="location" name="location"
+                                                                       [(ngModel)]="deviceCustomer.location"
+                                                                       placeholder="Location">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-10">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="phone"
+                                                                   class="col-sm-4 control-label">Phone</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="tel" class="form-control"
+                                                                       formControlName="phone" name="phone"
+                                                                       [(ngModel)]="deviceCustomer.phone"
+                                                                       id="phone" placeholder="Phone">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title custom-font"><strong>Configuration </strong>Details
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row mb-10">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">Postilion</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" class="form-control"
+                                                                       formControlName="postilionIp"
+                                                                       name="postilionIp"
+                                                                       [(ngModel)]="deviceCustomer.postilionIp"
+                                                                       placeholder="Postilion IP">
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control"
+                                                                       formControlName="postilionPort"
+                                                                       name="postilionPort"
+                                                                       [(ngModel)]="deviceCustomer.postilionPort"
+                                                                       placeholder="Postilion port" max="6">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-10">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">Tms Server</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" class="form-control"
+                                                                       formControlName="tmsServerIp"
+                                                                       name="tmsServerIp"
+                                                                       [(ngModel)]="deviceCustomer.tmsServerIp"
+                                                                       placeholder="Tms Server IP" required>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control"
+                                                                       formControlName="tmsServerPort"
+                                                                       name="tmsServerPort"
+                                                                       [(ngModel)]="deviceCustomer.tmsServerPort"
+                                                                       placeholder="Tms Server port" max="6" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-10">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">Tync</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" class="form-control"
+                                                                       formControlName="tsyncIp" name="tsyncIp"
+                                                                       [(ngModel)]="deviceCustomer.tsyncIp"
+                                                                       placeholder="Tync IP">
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <input type="number" class="form-control"
+                                                                       formControlName="tsyncPort"
+                                                                       name="tsyncPort"
+                                                                       [(ngModel)]="deviceCustomer.tsyncPort"
+                                                                       placeholder="Tync port" maxlength="6">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- col -->
+                                    <div class="col-md-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title custom-font"><strong>Terminal </strong>Details
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div formArrayName="multicurrency">
+                                                    <div
+                                                        *ngFor="let currency of myForm.controls.multicurrency; let i=index">
+                                                        <div [formGroupName]="i">
+                                                            <div class="col-md-12">
+                                                                <div class="row mb-10">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-4 control-label">Merchant
+                                                                                ID {{i+1}}</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control"
+                                                                                       formControlName="merchantId"
+                                                                                       placeholder="Merchant ID {{i+1}}"
+                                                                                       required/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-4 control-label">Terminal
+                                                                                ID {{i+1}}</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input type="text" class="form-control"
+                                                                                       formControlName="terminalId"
+                                                                                       placeholder="Terminal ID {{i+1}}"
+                                                                                       required/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                class="col-sm-4 control-label">Currency
+                                                                                {{i+1}}</label>
+                                                                            <div class="col-sm-8">
+                                                                                <select name="currency"
+                                                                                        placeholder="Select Currency"
+                                                                                        formControlName="currencyId"
+                                                                                        class="form-control" required>
+                                                                                    <option
+                                                                                        *ngFor="let currency of currencies"
+                                                                                        [value]="currency.currencyId">
+                                                                                        {{currency.currencyName}}
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <!--<div class="col-sm-2">
+                                                                                <button class="btn btn-primary"
+                                                                                        type="button"
+                                                                                        *ngIf="i == 0"
+                                                                                        (click)="addMultiCurrency()">
+                                                                                    <i class="fa fa-plus-circle"
+                                                                                       style="cursor: default"></i>
+                                                                                </button>
+                                                                                <button class="btn btn-danger" type="button"
+                                                                                        *ngIf="i > 0"
+                                                                                        (click)="removeMultiCurrency()">
+                                                                                    <i class="fa fa-remove"
+                                                                                       style="cursor: default"></i>
+                                                                                </button>
+                                                                            </div>-->
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">Admin
+                                                                Password</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="password" class="form-control"
+                                                                       formControlName="adminPassword"
+                                                                       [(ngModel)]="deviceCustomer.adminPassword"
+                                                                       placeholder="Admin Password" minlength="4"
+                                                                       name="adminPassword"
+                                                                       maxlength="6">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">Merchant
+                                                                Password</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="password" class="form-control"
+                                                                       formControlName="merchantPassword"
+                                                                       name="merchantPassword"
+                                                                       [(ngModel)]="deviceCustomer.merchantPassword"
+                                                                       placeholder="Merchant Password" minlength="4"
+                                                                       maxlength="6">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">Receipt
+                                                                Profile</label>
+                                                            <div class="col-sm-10">
+                                                                <textarea class="form-control" rows="3"
+                                                                          formControlName="receiptProfile"
+                                                                          name="receiptProfile"
+                                                                          [(ngModel)]="deviceCustomer.receiptProfile"
+                                                                          style="border-color: #008080;"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">Transaction
+                                                                Counter</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control"
+                                                                       formControlName="transactionCounter"
+                                                                       name="transactionCounter"
+                                                                       [(ngModel)]="deviceCustomer.transactionCounter"
+                                                                       placeholder="Transaction Counter">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <button [disabled]="!myForm.valid" type="submit"
+                                                        class="btn btn-success  pull-right mb-3  btn-round">Save
+                                                    Customer
+                                                </button>
+                                                <button type="reset"
+                                                        class="btn btn-default  pull-right mb-3  btn-round mr-20">Reset
+                                                    form
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="tab2">
+                            <form name="step2" role="form">
+                                <div class="row">
+                                    <mat-form-field class="col-md-6">
+                                        <label>Serial Number: </label>
+                                        <input matInput placeholder="Serial Number" aria-label="Serial Number"
+                                               [matAutocomplete]="auto" [formControl]="stateCtrl"
+                                               [(ngModel)]="model.serialNo" name="name" required/>
+                                        <mat-autocomplete #auto="matAutocomplete">
+                                            <mat-option *ngFor="let state of filteredStates | async"
+                                                        [value]="state.serialNo">
+                                                <span>{{state.serialNo}}</span>
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                                    <mat-form-field class="col-md-6">
+                                        <label>Merchant Reference: </label>
+                                        <input matInput placeholder="Merchant Reference"
+                                               aria-label="Agent / Merchant ID"
+                                               [matAutocomplete]="merchantId" [formControl]="merchantControl"
+                                               [(ngModel)]="model.agentMerchantId" name="merchantId" required/>
+                                        <mat-autocomplete #merchantId="matAutocomplete">
+                                            <mat-option *ngFor="let state of filteredMerchants | async"
+                                                        (onSelectionChange)="loadMerchant(state.agentMerchantId)"
+                                                        [value]="state.agentMerchantId">
+                                                <span>{{state.agentMerchantId}}</span>
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-6">
+                                        <label class="col-sm-6 control-label">Select Business Unit</label>
+                                        <select placeholder="Select Business Unit" (change)="onChange()"
+                                                [(ngModel)]="model.productId" name="product" required
+                                                class="form-control col-sm-6">
+                                            <option *ngFor="let product of products" [value]="product.productId">{{
+                                                product.productName }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6">
+                                        <label class="col-sm-2 control-label">Manufacturer</label>
+                                        <select [(ngModel)]="model.makeId" placeholder="Manufacturer"
+                                                (change)="loadModels()" name="makeId" required
+                                                class="form-control col-sm-10">
+                                            <option *ngFor="let make of makes" [value]="make.makeId">{{make.make}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="col-sm-6 control-label">Select Device Model</label>
+                                        <select placeholder="Select Device Model" [(ngModel)]="model.modelId"
+                                                name="modelId" (change)="setAppVersionDropdown()" required
+                                                class="col-sm-6 form-control">
+                                            <option value=""> Select Device Model</option>
+                                            <option *ngFor="let devicemodel of devicemodels"
+                                                    [value]="devicemodel.modelId">{{ devicemodel.model }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="tab-pane" id="tab3">
+                            <form novalidate name="step3" role="form">
+                                <label>Select Estate: </label>
+                                <tree-select name="simpleSelect" [items]="items" idField="unitItemId" textField="name"
+                                             childrenField="children" [(ngModel)]="simpleSelected"
+                                             required=true #simpleSelect="ngModel"
+                                             [filterPlaceholder]="FilterPlaceholder" [allowFilter]="ShowFilter"
+                                             [disabled]="Disabled"
+                                             [allowParentSelection]="AllowParentSelection"></tree-select>
+                                <div *ngIf="simpleSelect.errors && (simpleSelect.dirty || simpleSelect.touched)"
+                                     class="alert alert-danger">
+                                    <div [hidden]="!simpleSelect.errors.required">Estate is required</div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="tab4">
+                            <form name="step4" role="form" novalidate>
+                                <div class="row">
+                                    <mat-form-field class="col-lg-12">
+                                        <mat-select placeholder="Select App Version" [(ngModel)]="model.appId"
+                                                    name="appVersion">
+                                            <mat-option *ngFor="let app of apps" [value]="app.appId">{{ app.appName }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <div class="center">
+                                        <file-drop headertext="Drop files here" (onFileDrop)="dropped($event)"
+                                                   (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                                            <span></span>
+                                        </file-drop>
+                                        <div class="upload-table">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Files List</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="upload-name-style">
+                                                <tr *ngFor="let item of files; let i=index">
+                                                    <td><strong>{{ item.relativePath }}</strong></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="tab-pane" id="tab5">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title custom-font"><strong>Customer </strong>Information
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <app-modal-view-entity
+                                                [viewparam]="viewparamCustomer"></app-modal-view-entity>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title custom-font"><strong>Selected Estate </strong>
+                                                Details
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <app-modal-view-entity
+                                                [viewparam]="viewparamEstate"></app-modal-view-entity>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title custom-font"><strong>Device </strong>Information
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <app-viewentity [viewparam]="viewparamDevice"></app-viewentity>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="pager wizard">
+                            <li class="previous">
+                                <button class="btn btn-default">Previous</button>
+                            </li>
+                            <li class="next">
+                                <button class="btn btn-primary">Next</button>
+                            </li>
+                            <li class="next finish" style="display:none;">
+                                <button class="btn btn-success" (click)="submitDevice()" [disabled]="isCompleted">
+                                    Finish
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+input.ng-touched.ng-invalid{
+  border-color: #dc3545;
+}
+.validation-error{
+  color: #dc3545;
+}
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+} 

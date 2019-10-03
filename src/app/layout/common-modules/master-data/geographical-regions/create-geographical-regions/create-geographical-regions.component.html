@@ -1,0 +1,48 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Add Geographical Region'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Geographical Region'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <a routerLink="javascript:void(0)" (click)="goBack()">
+                <button type="submit" mat-raised-button color="primary">
+                    Return
+                </button>
+            </a>
+            <div class="tile-body">
+                <form (ngSubmit)="onCreateRegions(createForm)" #createForm="ngForm" role="form" novalidate>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Geographical Region Name</label>
+                            <input matInput class="form-control borders" [(ngModel)]="model.regionName" type="text"
+                                pattern="[a-zA-Z ]*" #regionName="ngModel" name="regionName" placeholder="Region Name"
+                                required="required" />
+                            <div *ngIf="regionName.errors?.required && regionName.touched" class="validation-error">This
+                                field is required</div>
+                            <div *ngIf="regionName.errors?.pattern && regionName.touched" class="validation-error">
+                                Please enter a valid Region name</div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Geographical Region Code </label>
+                            <input matInput class="form-control borders" type="text" [(ngModel)]="model.code"
+                                #code="ngModel" name="code" placeholder="Code" required="required" />
+                            <div *ngIf="code.errors?.required && code.touched" class="validation-error">This field is
+                                required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="pull-right">
+                            <button *ngIf="!isUpdate" [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success">Save Region
+                            </button>
+                            <button *ngIf="isUpdate" [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success">Update Region
+                            </button>
+                            <button [disabled]="!createForm.form.valid" type="reset" class="btn btn-warning">Reset
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

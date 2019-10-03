@@ -1,0 +1,128 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Create Parts'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Parts'" [icon]="'fa-edit'"></app-page-header>
+        <p>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div>
+                        <section class="tile">
+                            <div class="tile-body">
+                                <!-- <....................................parts onboarding..................................> -->
+                                <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" novalidate>
+  
+                                    <div class="form-group col-md-6">
+                                        <label>Part Number *</label>
+                                        <input type="text" class="form-control" name="partnumber" 
+                                            [(ngModel)]="customers.partnumber" #partnumber="ngModel" placeholder="partnumber"
+                                            required />
+                                        <div *ngIf="partnumber.errors?.required && partnumber.touched" class="validation-error">
+                                            Field is required</div>
+                                        <!-- <div *ngIf="partnumber.errors?.pattern && partnumber.touched" class="validation-error">
+                                            Please enter a valid partnumber</div> pattern="[0-9 ]*"-->
+                                    </div>
+  
+                                    <div class="form-group col-md-6">
+                                        <label>Part Description *</label>
+                                        <input type="text" class="form-control" name="partdescription"
+                                           [(ngModel)]="customers.partdescription"
+                                            #partdescription="ngModel" placeholder="part description" required  />
+                                        <div *ngIf="partdescription.errors?.required && partdescription.touched"
+                                            class="validation-error">Field is required</div>
+                                        <!-- <div *ngIf="partdescription.errors?.patternn && partdescription.touched"
+                                            class="validation-error">Please enter numbers Only</div> -->
+                                            <!-- pattern="^[0-9\-\+]{9,15}$" -->
+                                        <br>
+                                    </div>
+                                    <br>
+  
+                                    <div class="form-group col-md-6">
+                                        <label>Minimum Limit *</label>
+                                        <input type="text" id="minimumlimit" class="form-control"
+                                            name="minimumlimit"
+                                            [(ngModel)]="customers.minimumlimit" #minimumlimit="ngModel" placeholder="minimum limit" required>
+                                        <div *ngIf="minimumlimit.errors?.required && minimumlimit.touched" class="validation-error">
+                                            Field is required</div>
+                                        <!-- <div *ngIf="minimumlimit.errors?.pattern && minimumlimit.touched" class="validation-error">
+                                            Please enter a valid minimum limit</div> -->
+                                    </div>
+  
+                                    <div class="form-group col-md-6">
+                                        <label>Maximum Limit*</label>
+                                        <input type="text" class="form-control" name="maximumlimit"
+                                            [(ngModel)]="customers.maximumlimit"
+                                            #maximumlimit="ngModel" placeholder="maximum limit" required>
+                                        <div *ngIf="maximumlimit.errors?.required && maximumlimit.touched"
+                                            class="validation-error">Field is required</div>
+                                        <div *ngIf="maximumlimit.errors?.pattern && maximumlimit.touched"
+                                            class="validation-error">Please valid maximum limit </div>
+                                        <br>
+                                    </div> 
+                                    <br>                                     
+                                    <div>
+                                        <br>
+                                        <div class="col-lg-8">
+                                            <button *ngIf="!isUpdate" [disabled]="!customerForm.form.valid"
+                                                type="submit" class="btn btn-success ">Save</button>
+                                            <button *ngIf="isUpdate" type="submit" class="btn btn-success ">Update
+                                                Parts </button>
+                                            <button [disabled]="!customerForm.form.valid" type="reset"
+                                                class="btn btn-warning ">Reset </button>
+                                                <br><br>
+                                        </div>
+                                    </div>
+                                </form>                                 
+                            </div>
+                            <br><br>
+                          </section>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+  
+        <div class="page page-dashboard">
+            <h6>Upload a File</h6>
+            <p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div>
+                            <section class="tile">
+                         
+                            <form *ngIf="upload" role="form" [formGroup]="upload" (ngSubmit)="FileUpload()"> 
+                                <div class="form-content">                                                                     
+                                    <div class="form-group col-md-6">
+                                        <label>Upload CSV / Excel File</label>
+                                        <span>{{File ? File.name : 'or drag and drop file here' }}</span>
+                                        <input class="form-control input-underline input-lg" type="file" name="File"
+                                            (change)="onFileChange($event)" accept=".xlsx, .xls" #fileInput required>
+                                        <!-- <div *ngIf="(f.File.errors && f.File.touched)||submitted ">
+                                            <div *ngIf="f.File.errors.required" class="validation-error">Select a file -->
+                                            <!-- </div> -->
+                                        <!-- </div> -->
+                                        <br>
+                                    </div>
+                                    <br>
+                                </div>
+                                 <div class="col-lg-8">
+                                    <button *ngIf="!isUpdate" [disabled]="!upload.valid" type="submit"
+                                        class="btn btn-success ">Upload</button>
+                                  
+                                    <button [disabled]="!upload.valid" type="reset" class="btn btn-warning ">Reset
+                                    </button>
+                                    
+                                </div>
+                            </form>
+                           
+                        </section>
+                    </div>
+                </div>
+            </div>
+    </div>
+  
+  
+  
+  
+      
+  

@@ -1,0 +1,11 @@
+<div [@routerTransition]>
+  <div class="page page-dashboard">
+      <app-page-header [heading]="'View Customer Details'" [icon]="'fa-eye'"></app-page-header>
+      <section class="tile">
+          <div class="tile-body row">
+              <app-viewentity [viewparam]="viewparam" [title]="'Customer Details '" [subtitle]="customers.name"></app-viewentity>
+          </div>
+      </section>
+  </div>
+</div>
+

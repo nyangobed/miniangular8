@@ -1,0 +1,139 @@
+<div [@routerTransition]>
+  <div class="page page-dashboard">
+      <app-page-header *ngIf="!isUpdate" [heading]="'Create Parts'" [icon]="'fa-edit'"></app-page-header>
+      <app-page-header *ngIf="isUpdate" [heading]="'Update Parts'" [icon]="'fa-edit'"></app-page-header>
+      <h6>Parts Details</h6>
+      <p>
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <div>
+                      <section class="tile">
+                          <div class="tile-body">
+                              <!-- <....................................parts onboarding..................................> -->
+                              <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" novalidate>
+                                    
+                                  <div class="form-group col-md-6">
+                                      <label>Part Number*</label>
+                                      <input type="text" class="form-control" name="partNumber" 
+                                          [(ngModel)]="customers.partNumber" #partNumber="ngModel" placeholder="Part Number"
+                                          required />
+                                      <div *ngIf="partNumber.errors?.required && partNumber.touched" class="validation-error">
+                                        Field is required</div>                                    
+                                        <br> 
+                                    </div>
+                                    <br> 
+                                  <div class="form-group col-md-6">
+                                      <label>Part Model </label>
+                                      <input type="text" class="form-control" name="partModel"                                    
+                                           [(ngModel)]="customers.partModel"
+                                          #partModel="ngModel" placeholder="Part Model" required                                              />
+                                      <div *ngIf="partModel.errors?.required && partModel.touched"
+                                          class="validation-error">Field is required</div>
+                                      <!-- <div *ngIf="phone_number.errors?.patternn && phone_number.touched"
+                                          class="validation-error">Please enter numbers Only</div>    pattern="^[0-9\-\+]{9,15}$"-->
+                                      
+                                  </div>
+                                                                                      
+
+                                  <div class="form-group col-md-6">
+                                      <label>Part Name</label>
+                                      <input type="text" class="form-control" name="partName"
+                                          [(ngModel)]="customers.partName"
+                                          #partName="ngModel" placeholder="Part Name" required>
+                                      <div *ngIf="partName.errors?.required && partName.touched"
+                                          class="validation-error">Field is required</div>
+                                         
+                                      <br>
+                                  </div> 
+                                  <div class="form-group col-md-6">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" name="description"
+                                        [(ngModel)]="customers.description"
+                                        #description="ngModel" placeholder="Description" required>
+                                    <div *ngIf="description.errors?.required && description.touched"
+                                        class="validation-error">Field is required</div>
+                                       
+                                    <br>
+                                </div> 
+                                  <br>
+
+                                  <!-- drop-down to fetch information from database -->
+                                   <div class="form-group col-md-6">
+                                      <label>Manufacturer Name</label>
+                                      <input type="text" class="form-control" name="manufacturerName"
+                                       [(ngModel)]="customers.manufacturerName"
+                                      #manufacturerName="ngModel" placeholder="Manufacturer Name" required>
+                                      <div *ngIf="manufacturerName.errors?.required  && manufacturerName.touched" class="validation-error">Field is required</div>
+                                      
+                                  </div> 
+                                  
+                                      <br>
+                                  <div>
+                                      <br>
+                                      <div class="col-lg-8">
+                                          <button *ngIf="!isUpdate" [disabled]="!customerForm.form.valid"
+                                              type="submit" class="btn btn-success ">Save</button>
+                                          <button *ngIf="isUpdate" type="submit" class="btn btn-success ">Update
+                                              Parts</button>
+                                          <button [disabled]="!customerForm.form.valid" type="reset"
+                                              class="btn btn-warning ">Reset </button>
+                                              <br><br>
+                                      </div>
+                                  </div>
+                              </form>                                 
+                          </div>
+                          <br><br>
+                        </section>
+                      </div>
+                  </div>
+              </div>
+      </div>
+  </div>
+
+      <div class="page page-dashboard">
+          <h6>Upload a File</h6>
+          <p>
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <div>
+                          <section class="tile">
+                       
+                          <form *ngIf="upload" role="form" method="POST" [formGroup]="upload" (ngSubmit)="FileUpload()"> 
+                              <div class="form-content">                                                                     
+                                  <div class="form-group col-md-6">
+                                      <label>Upload CSV / Excel File</label>
+                                      <span>{{File ? File.name : 'or drag and drop file here' }}</span>
+                                      <input class="form-control input-underline input-lg" type="file" name="File"
+                                          (change)="onFileChange($event)" accept=".xlsx, .xls" #fileInput required>
+                                      <!-- <div *ngIf="(f.File.errors && f.File.touched)||submitted ">
+                                          <div *ngIf="f.File.errors.required" class="validation-error">Select a file -->
+                                          <!-- </div> -->
+                                      <!-- </div> -->
+                                      <br>
+                                  </div>
+                                  <br>
+                              </div>
+                               <div class="col-lg-8">
+                                  <button *ngIf="!isUpdate" [disabled]="!upload.valid" type="submit"
+                                      class="btn btn-success ">Upload</button>
+                                  <button *ngIf="isUpdate" type="submit" class="btn btn-success ">Update Orders
+                                  </button>
+                                  <button [disabled]="!upload.valid" type="reset" class="btn btn-warning ">Reset
+                                  </button>
+                                  <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" >
+                                          <a routerLink="javascript:void(0)" (click)="goBack()">back </a>
+                                  </button>
+                              </div>
+                          </form>
+                         
+                      </section>
+                  </div>
+              </div>
+          </div>
+  </div>
+
+
+
+
+    
+

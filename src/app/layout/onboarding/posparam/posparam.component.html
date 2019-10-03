@@ -1,0 +1,15 @@
+<div [formGroup]="form" class="row">
+    <div class="form-group col-md-6">
+        <label [attr.for]="posparam.key">{{posparam.label}}</label>
+        <div [ngSwitch]="posparam.controlType">
+            <div *ngSwitchCase="'textbox'">
+                <input class="form-control borders" [formControlName]="posparam.key" [id]="posparam.key" [type]="posparam.type">
+            </div>
+            <mat-form-field *ngSwitchCase="'dropdown'">
+                <mat-select [id]="posparam.key" [formControlName]="posparam.key">
+                    <mat-option *ngFor="let opt of posparam.options" [value]="opt.key">{{opt.value}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

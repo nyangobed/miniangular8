@@ -1,0 +1,26 @@
+<div [@routerTransition]>    
+        <div class="page page-dashboard">
+            <app-page-header [heading]="'Device Reports'" [icon]="'fa-check-square'"></app-page-header>
+            <section class="tile">
+                <div class="tile-body">                           
+                  <!-- <form *ngIf="upload"  [formGroup]="upload" > 
+                   <div class="row">              
+                   <div class="form-group col-md-2">
+                    <label>Start Date</label>
+                   <input type="date" class="form-control" formControlName="from" name="from" required>            
+                   </div>
+                   <div class="form-group col-md-2">
+                   <label>End Date</label>
+                   <input type="date" class="form-control" formControlName="to" name="to" required>     
+                   </div>
+                   <br>
+                   <button type="button" class="btn btn-primary btn-rounded waves-effect"(click)="FilterByDate()">Filter By date</button>        
+                   </div> 
+                   </form> -->
+    
+                 <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered row-border hover"></table>
+                </div>
+            </section>
+        </div>
+      </div>  
+      

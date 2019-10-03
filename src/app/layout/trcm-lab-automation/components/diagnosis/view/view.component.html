@@ -1,0 +1,108 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="isUpdate" [heading]="'Update'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <div class="container" style="width: 100%">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                <div class="form-content row">
+                                    <div class="form-group col-md-4">
+                                        <label>Serial Number</label>
+                                        <input type="text" formControlName="serialnumber"
+                                            class="form-control input-underline input-lg" id="serialnumber"
+                                            style="border-style:outset; overflow: hidden; border-radius: 4px;" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Customers</label>
+                                        <input type="text" formControlName="customers"
+                                            class="form-control input-underline input-lg" id="customers"
+                                            style="border-style:outset; overflow: hidden; border-radius: 4px;" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Repair Centre</label>
+                                        <select class="form-control input-underline input-lg"
+                                            formControlName="repairCentre" required>
+                                            <option value="">--</option>
+                                            <option value="{{ centre }}" *ngFor="
+                                                            let centre of repairCentre
+                                                        ">{{ centre }}
+                                            </option>
+                                        </select>
+                                        <div *ngIf="
+                                                    (f.repairCentre?.errors &&
+                                                        f.repairCentre
+                                                            ?.touched) ||
+                                                    submitted
+                                                ">
+                                            <div *ngIf="
+                                                        f.repairCentre?.errors
+                                                            .required
+                                                    " class="validation-error">
+                                                Select a Repair Centre
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </div>
+                                    <br />
+                                    <div class="form-group col-md-6">
+                                        <label>Reported Defect</label>
+                                        <input type="text" formControlName="reportedDefects"
+                                            class="form-control input-underline input-lg" id="reportedDefects"
+                                            placeholder="Add the Reported Defect (optional)"
+                                            style="border-style:outset; border-radius: 4px;" />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Comments</label>
+                                        <input type="text" formControlName="comments"
+                                            class="form-control input-underline input-lg" id="comments"
+                                            placeholder="Add a Diagnosis comment"
+                                            style="border-style:outset; overflow: hidden; border-radius: 4px;"
+                                            required />
+                                        <div *ngIf="
+                                                    (f.comments?.errors &&
+                                                        f.comments?.touched) ||
+                                                    submitted
+                                                ">
+                                            <div *ngIf="
+                                                        f.comments?.errors
+                                                            .required
+                                                    " class="validation-error">
+                                                Type a comment in regards to
+                                                diagnosis
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </div>
+                                    <br />
+                                    <div class="form-group col-md-6">
+                                        <label>Device Errors</label>
+                                        <ng-select [multiple]="true" [items]="items1" placeholder=" No Error selected"
+                                            formControlName="deviceErrors"></ng-select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Spare Parts</label>
+                                        <ng-select [multiple]="true" [items]="items2"
+                                            placeholder=" No Spare Part selected" formControlName="parts"></ng-select>
+                                        <br>
+                                    </div>
+                                    <br />
+                                    <div class="col-md-12 pull-right">
+                                        <button type="submit" *ngIf="isUpdate" mat-raised-button color="primary"
+                                            [disabled]="myForm.invalid">
+                                            Update
+                                        </button>
+                                        <button type="reset" mat-raised-button color="warn" [disabled]="myForm.invalid">
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

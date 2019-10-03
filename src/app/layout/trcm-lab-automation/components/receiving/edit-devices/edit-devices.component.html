@@ -1,0 +1,94 @@
+<div [@routerTransition]>
+        <div class="page page-dashboard">
+            <app-page-header *ngIf="!isUpdate" [heading]="'View'" [icon]="'fa-edit'"></app-page-header>
+            <app-page-header *ngIf="isUpdate" [heading]="'Update'" [icon]="'fa-edit'"></app-page-header>
+            <section class="tile">
+            <div class="tile-body">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div>
+                            <!-- <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                <div class="form-content" > -->
+                                      <!-- <div class="form-group col-md-4">
+                                        <label>Batch Number</label>
+                                        <input type="text" formControlName="batchNumber" class="form-control input-underline input-lg" id="batchNumber" placeholder="Batch Number" required>
+                                        <div *ngIf="(f.batchNumber?.errors && f.batchNumber?.touched) || submitted">
+                                        </div>
+                                      </div> -->
+                                      <!-- <div formGroupName = "devices" class="form-group col-md-8" >
+                                          <div class="form-group col-md-4">
+                                              <label>Serial Number</label>
+                                              <input type="text" formControlName="serialnumber" class="form-control input-underline input-lg" id="serialnumber" placeholder="Add Serial Number" required>
+                                              <div *ngIf="(f.serialnumber?.errors && f.serialnumber?.touched) || submitted">
+                                                <div *ngIf="f.serialnumber?.errors.required" class="validation-error">Enter Serial Number</div>
+                                              </div>
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                              <label>Client</label>
+                                              <input type="text" formControlName="deviceowner" class="form-control input-underline input-lg" id="deviceowner" placeholder="Add client name" required>
+                                              <div *ngIf="(f.deviceowner?.errors && f.deviceowner?.touched) || submitted">
+                                                <div *ngIf="f.deviceowner?.errors.required" class="validation-error">Who is the Client</div>
+                                              </div>
+                                          </div>
+                                      </div> -->
+                                        <!-- <div class="form-group col-md-4">
+                                          <label>Reported Defect</label>
+                                          <input type="text" formControlName="reportedDefects" class="form-control input-underline input-lg" id="reportedDefects" placeholder="Add the Reported Defect" required>
+                                          <div *ngIf="(f.reportedDefects?.errors && f.reportedDefects?.touched) || submitted">
+                                            <div *ngIf="f.reportedDefects?.errors.required" class="validation-error">Please Provide the Reported Defect</div>
+                                          </div>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                          <label>Failure Found</label>
+                                          <input type="text" formControlName="failureFound" class="form-control input-underline input-lg" id="failureFound" placeholder="Add the Failure Found" required>
+                                          <div *ngIf="(f.failureFound?.errors && f.failureFound?.touched) || submitted">
+                                            <div *ngIf="f.failureFound?.errors.required" class="validation-error">Type the Failure you Found, Please</div>
+                                          </div>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                          <label>Levels</label>
+                                          <select class="form-control input-underline input-lg" formControlName="levels" id="levels"  required>
+                                            <option value=""></option>
+                                            <option value='LEVEL 1'>LEVEL 1</option>
+                                            <option value='LEVEL 2'>LEVEL 2</option>
+                                            <option value='LEVEL 3'>LEVEL 3</option>
+                                            <option value='LEVEL 4'>LEVEL 4</option>
+                                          </select>
+                                          <div *ngIf="(f.levels?.errors && f.levels?.touched) || submitted">
+                                            <div *ngIf="f.levels?.errors.required" class="validation-error">Add a repair level</div>
+                                          </div>
+                                        </div>
+                                        <div formGroupName = "parts" class="form-group col-md-6" >
+                                            <div>
+                                                <label>Part Name</label>
+                                                <select class="form-control input-underline input-lg" formControlName="partNumber" id="partNumber"  required>
+                                                  <option  *ngFor="let parts of part" value={{parts.partNumber}} >{{parts.partName}}</option>
+                                                </select>
+                                                <div *ngIf="(f.parts.partNumber?.errors && f.parts.partNumber?.touched) || submitted">
+                                                  <div *ngIf="f.parts.partNumber?.errors.required" class="validation-error">Add a part</div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <!-- <div class="form-group col-md-6">
+                                            <label>Comments</label>
+                                            <input type="text" formControlName="comments" class="form-control input-underline input-lg" id="comments" placeholder="Add a comment" required>
+                                            <div *ngIf="(f.comments?.errors && f.comments?.touched) || submitted">
+                                              <div *ngIf="f.comments?.errors.required" class="validation-error">Add a comment regarding the device</div>
+                                            </div>
+                                        </div> -->
+                                <!-- </div>
+                                <div>
+                                    <button type="submit" *ngIf="isUpdate" mat-raised-button color="primary" [disabled]="myForm.invalid">Update</button>
+                                    <button type="reset" mat-raised-button color="warn" [disabled]= "myForm.invalid">Reset</button>
+                                </div>
+                                
+                            </form> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        </div>
+    </div>

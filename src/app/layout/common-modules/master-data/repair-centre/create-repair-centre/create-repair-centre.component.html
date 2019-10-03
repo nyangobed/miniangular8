@@ -1,0 +1,49 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Add Repair Centre'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Repair Centre'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <div class="row">
+                    
+                </div>
+                <form (ngSubmit)="onCreateErrorCodes(createForm)" #createForm="ngForm" role="form">
+                        <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Name</label>
+                                    <input class="form-control borders" [(ngModel)]="model.name" type="text"
+                                           name="name"
+                                           required="required"/>
+                                </div>
+                            </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Region</label>
+                            <input class="form-control borders" [(ngModel)]="model.region" type="text"
+                                   name="region"
+                                   required="required"/>
+                        </div>
+                    </div>
+
+                    
+
+                    
+
+                    
+
+                   
+
+
+                    <div class="col-lg-8">
+                        <button *ngIf="!isUpdate" [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success pull-left">Save Repair Centre
+                        </button>
+                        <button *ngIf="isUpdate" [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success pull-left">Update Repair Centre
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

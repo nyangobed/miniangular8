@@ -1,0 +1,36 @@
+ <div [@routerTransition]>
+      <div class="page page-forms-wizard">  
+          <app-page-header [heading]="'Approve Parts'" [icon]="'fa-edit'"></app-page-header>
+          <section class="tile">
+                <button type="save" class="btn btn-secondary" >
+                        <a routerLink="javascript:void(0)" (click)="goBack()">Back </a>
+                </button>
+              <div class="tile-body">
+                  <app-checker-actions 
+                  [endpoint]="'atlas/parts'">
+                </app-checker-actions>
+                <table datatable [dtOptions]="dtOptions"  class="table table-striped table-bordered row-border hover">
+                    <thead>
+                        <tr>
+                              <th class="select-checkbox" style="text-align :center"><input type="checkbox"
+                                  class="select-all-checkbox border-#{000000}"/>
+                               </th>
+                               <!-- <th>Part ID</th> -->
+                                <th>Part Name</th>
+                                <th>Part Model</th>
+                                <th>Part Number</th>
+                                <th>Part Description</th>
+                                <!-- <th>Quantity</th> -->
+                                <th>Action</th>
+                                <th>Action Status</th>
+                                <!-- <th>InTrash</th> -->
+                                <th>Manufacturer</th>
+                            </tr>
+                            </thead>
+                </table>
+              </div>
+          </section>
+      </div>
+  </div>
+
+ 

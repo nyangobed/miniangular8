@@ -1,0 +1,32 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Heart Beats'" [icon]="'fa-check-square'"></app-page-header>
+    <mat-card>
+        <div class="row col-md-12">
+            <form (ngSubmit)="updateContent()" #filterHeart="ngForm" role="form">
+                <mat-form-field class="col-lg-12">
+                    <label>Serial No:</label>
+                    <input matInput type="text"  name="serialNo" [(ngModel)]="serialNo" required="required"/>
+                </mat-form-field>
+                <div class="col-lg-12">
+                    <button [disabled]="!filterHeart.form.valid" type="submit" class="btn btn-success btn-small"><small>Filter</small></button>
+                </div>
+            </form>
+        </div>
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <h4 class="modal-title">Heartbeat Details</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-modal-view-entity [viewparam]="viewparam" ></app-modal-view-entity>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+            </div>
+        </ng-template>
+        <app-export-data [endpoint]="'heart-beat'"></app-export-data>
+        <table datatable [dtOptions]="dtOptions" class="row-border hover"></table>        
+    </mat-card>
+</div>

@@ -1,0 +1,60 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Issue Parts'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Issued Parts'" [icon]="'fa-edit'"></app-page-header>
+        <h6> Parts To Issue Details</h6>
+        <p>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div>
+                        <section class="tile">
+                            <div class="tile-body">
+                                <form *ngIf="upload" role="form" method="POST" [formGroup]="upload" (ngSubmit)="Onsubmit()">
+                                    <div class="form-content">
+                                        
+                                        
+                                        
+                                        
+                                        <div class="form-group col-md-6">
+                                            <label>Date Issued</label>
+                                            <input type="date" name="dateIssued" class="form-control" formControlName="dateIssued"
+                                                id="dateIssued" required>
+                                                
+                                            <div *ngIf="(f.dateIssued.errors && f.dateIssued.touched)||submitted ">
+                                                <div *ngIf="f.dateIssued.errors.required" class="validation-error">Please
+                                                    enter date</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Upload CSV / Excel File</label>
+                                            <span>{{File ? File.name : 'or drag and drop file here' }}</span>
+                                            <input class="form-control input-underline input-lg" type="file" name="File"
+                                                (change)="onFileChange($event)" accept=".xlsx, .xls" #fileInput required>
+                                            <div *ngIf="(f.File.errors && f.File.touched)||submitted ">
+                                                <div *ngIf="f.File.errors.required" class="validation-error">Select a file
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <button *ngIf="!isUpdate" [disabled]="!upload.valid" type="submit"
+                                            class="btn btn-success ">Upload</button>
+                                        <button *ngIf="isUpdate" type="submit" class="btn btn-success ">Update Issued Parts
+                                        </button>
+                                        <button [disabled]="!upload.valid" type="reset" class="btn btn-warning ">Reset
+                                        </button>
+                                        <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" >
+                                                <a routerLink="javascript:void(0)" (click)="goBack()">back </a>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+    </div>
+  </div>
+  

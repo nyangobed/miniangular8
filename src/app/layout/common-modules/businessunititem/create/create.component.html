@@ -1,0 +1,127 @@
+<div [@routerTransition]>    
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Create Estates'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Estates'" [icon]="'fa-edit'"></app-page-header>    
+        <!--    <form-wizard (onStepChanged)="onStepChanged($event)">
+                <wizard-step [title]="'Select Product'" [isValid]="emailForm.form.valid" (onNext)="onStep1Next($event)" [hidden]="isUpdate">
+                    <p class="lead">Select Product</p>
+                    <form #emailForm="ngForm">
+                        <div class="form-group">
+                            <mat-form-field class="col-md-6">
+                                <mat-select placeholder="Select Products" (change)="onChange($event)" [(ngModel)]="model.productId" name="product" required>
+                                    <mat-option *ngFor="let product of products" [value]="product.productId">{{ product.productName }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </form>
+                </wizard-step>
+                <wizard-step [title]="'Select Estate'" [showNext]="step2.showNext" [showPrev]="step2.showPrev" (onNext)="onStep2Next($event)"  [hidden]="createParent||isUpdate">
+                    <p class="lead">Select Parent Estate.</p>
+                    <div class="container">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <form #estateForm="ngForm">
+                                    <tree-select name="simpleSelect" [items]="items" idField="unitItemId" textField="name" childrenField="children" [(ngModel)]="simpleSelected"
+                                                 required=true #simpleSelect="ngModel" [filterPlaceholder]="FilterPlaceholder" [allowFilter]="ShowFilter" [disabled]="Disabled"
+                                                 [allowParentSelection]="AllowParentSelection"></tree-select>
+                                    <div *ngIf="simpleSelect.errors && (simpleSelect.dirty || simpleSelect.touched)" class="alert alert-danger">
+                                        <div [hidden]="!simpleSelect.errors.required">Simple select is required</div>
+                                    </div>
+                                </form>
+                                <div class="col-md-12">
+                                                                {{simpleSelected|json}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </wizard-step>
+                <wizard-step [title]="'Unit Details'" (onNext)="onStep3Next($event)" [isValid]="unitForm.form.valid" [hidden]="hideAllSteps">
+                    <p class="lead" *ngIf="!isUpdate">Create Unit Item</p>
+                    <p class="lead" *ngIf="isUpdate">Update Unit Item</p>
+                    <form #unitForm="ngForm">
+                        <fieldset class="form-group">
+                            <label>Unit Name</label>
+                            <input class="form-control" [(ngModel)]="model.name" type="text" name="name" required="required"/>
+                        </fieldset>
+        
+                        <fieldset class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="3" [(ngModel)]="model.description" name="description"  required="required"></textarea>
+                        </fieldset>
+                    </form>
+                </wizard-step>
+                <wizard-step [title]="'Confirm Details'" (onComplete)="onComplete($event)" [hidden]="hideAllSteps">
+                    <div [ngSwitch]="isCompleted">
+                        <div *ngSwitchDefault>
+                            <p class="lead">Confirm Details.</p>
+                            <app-viewentity [viewparam]="viewparam" [title]="'Details'" [subtitle]="model.name"></app-viewentity>
+                        </div>
+                        <div *ngSwitchCase="true">
+                            <h4>Thank you </h4>
+                        </div>
+                    </div>
+                </wizard-step>
+            </form-wizard>-->
+
+        <section class="tile">
+            <div class="tile-body">
+                <div id="rootwizard" class="tab-container tab-wizard">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li><a href="#tab1" data-toggle="tab">Select Product<span class="badge badge-default pull-right wizard-step">1</span></a></li>
+                        <li><a href="#tab2" data-toggle="tab">Parent Estates<span class="badge badge-default pull-right wizard-step">2</span></a></li>
+                        <li><a href="#tab3" data-toggle="tab">Create Estate<span class="badge badge-default pull-right wizard-step">3</span></a></li>
+                        <li><a href="#tab4" data-toggle="tab">Confirm Details<span class="badge badge-default pull-right wizard-step">5</span></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="tab1">
+                            <form name="step1" role="form">
+                                <div class="row">
+                                    <mat-form-field class="col-md-6">
+                                        <mat-select placeholder="Select Business Units" (change)="onChange($event)" [(ngModel)]="model.productId" name="product" required>
+                                            <mat-option *ngFor="let product of products" [value]="product.productId">{{ product.productName }}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>                                
+                            </form>
+
+                        </div>
+                        <div class="tab-pane" id="tab2">
+                            <form novalidate name="step2" role="form">
+                                <tree-select name="simpleSelect" [items]="items" idField="unitItemId" textField="name" childrenField="children" [(ngModel)]="simpleSelected"
+                                             required=true #simpleSelect="ngModel" [filterPlaceholder]="FilterPlaceholder" [allowFilter]="ShowFilter" [disabled]="Disabled"
+                                             [allowParentSelection]="AllowParentSelection"></tree-select>
+                                <div *ngIf="simpleSelect.errors && (simpleSelect.dirty || simpleSelect.touched)" class="alert alert-danger">
+                                    <div [hidden]="!simpleSelect.errors.required">Simple select is required</div>
+                                </div>   
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="tab3">
+                            <form name="step3" role="form" novalidate>
+                                <div class="row">
+                                    <fieldset class="form-group">
+                                        <label>Estate Name</label>
+                                        <input class="form-control" [(ngModel)]="model.name" type="text" name="name" required="required"/>
+                                    </fieldset>
+
+                                    <fieldset class="form-group">
+                                        <label>Description</label>
+                                        <textarea class="form-control" rows="3" [(ngModel)]="model.description" name="description"  required="required"></textarea>
+                                    </fieldset>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="tab-pane" id="tab4">
+                            <app-viewentity [viewparam]="viewparam" [title]="'Details'" [subtitle]="model.name"></app-viewentity>
+                        </div>
+                        <ul class="pager wizard">
+                            <li class="previous"><button class="btn btn-default">Previous</button></li>
+                            <li class="next"><button class="btn btn-primary">Next</button></li>
+                            <li class="next finish"  style="display:none;"><button class="btn btn-success" (click)="onComplete()" [disabled]="isCompleted">Finish</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

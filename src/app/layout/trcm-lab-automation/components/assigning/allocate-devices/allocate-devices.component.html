@@ -1,0 +1,32 @@
+<div class="tile-header dvd dvd-btm">
+    <div class="row">
+        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+            <button class="btn btn-info btn-ef btn-ef-3 btn-ef-3c mb-10 mr-20 pull-right" (click)="open(content)">{{assignLabel}}</button>
+            <ng-template #content let-c="close" let-d="dismiss">
+                <form (ngSubmit)="onSubmit(assignForm)" #assignForm="ngForm"  role="form">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{assignLabel}}</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <fieldset class="form-group">
+                            <select name="users" class="form-control input-underline input-md"
+                            [(ngModel)]="assignActions.repairModel" id="users">
+                                <option value={{users.userId}} *ngFor="let users of user">
+                                    {{users.fullName}}
+                                </option>
+                            </select>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+                        <button type="submit" [disabled]="!assignForm.form.valid" class="btn btn-success">{{assignLabel}}</button>
+                    </div>
+                </form>
+            </ng-template>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Repair Centre'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <app-delete-component [addLabel]="'Add repair centre'" 
+                [addLink]="'common-modules/master-data/repair-centre/create-repair-centre'" 
+                [approveLabel]="'Approve Repair Centre'" 
+                [approveLink]="'common-modules/master-data/repair-centre/approve-repair-centre'"
+                 [deleteLabel]="'Delete centre'" [endpoint]="'users'"></app-delete-component>
+                <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                    <thead>
+                    <tr>
+                        <th class="select-checkbox" style="text-align :center"><input type="checkbox"
+                        class="select-all-checkbox border-#{000000}"/>
+                        </th>
+                        <th>Name</th>
+                        <th>Region</th>
+                        <th>Action Status</th>
+                        <th>Created On</th>
+                        <th>in trash</th>
+                        <th>Action</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

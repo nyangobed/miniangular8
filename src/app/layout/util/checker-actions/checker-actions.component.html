@@ -1,0 +1,29 @@
+<div class="tile-header dvd dvd-btm">
+    <div class="row">
+        <div class="col-lg-6"></div> 
+        <div class="col-lg-6">
+            <button class="btn btn-danger btn-ef btn-ef-3 btn-ef-3c mb-10 mr-20 pull-right" (click)="open(content, declineLabel)">{{declineLabel}}</button>
+            <button class="btn btn-info btn-ef btn-ef-3 btn-ef-3c mb-10 mr-20 pull-right" (click)="open(content, approveLabel)">{{approveLabel}}</button>
+            <ng-template #content let-c="close" let-d="dismiss">
+                <form (ngSubmit)="approve(checkerForm)" #checkerForm="ngForm"  role="form">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{checkerActions.action}} Actions</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <fieldset class="form-group">
+                            <label>Notes</label>
+                            <textarea name="notes" class="form-control" maxlength="500" required="" rows="3" [(ngModel)]="checkerActions.notes"></textarea>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+                        <button type="submit" [disabled]="!checkerForm.form.valid" class="btn btn-success">{{checkerActions.action}}</button>
+                    </div>
+                </form>
+            </ng-template>
+        </div>
+    </div>
+</div>

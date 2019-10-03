@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-12">
+        <form (ngSubmit)="approve(checkerForm)" #checkerForm="ngForm"  role="form">
+            <h4 mat-dialog-title>{{checkerActions.action}} Actions</h4>
+            <mat-dialog-content>
+                <mat-form-field style="width: 100%;">
+                    <label>Notes</label>
+                    <textarea matInput name="notes"  maxlength="500" required="" rows="5" [(ngModel)]="checkerActions.notes"></textarea>
+                </mat-form-field>
+
+            </mat-dialog-content>
+            <mat-dialog-actions style="width: 100%;">
+                <button type="button" class="btn btn-secondary mr-10" mat-dialog-close>Close</button>
+                <button type="submit" [disabled]="!checkerForm.form.valid" class="btn btn-success">{{checkerActions.action}}</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+</div>

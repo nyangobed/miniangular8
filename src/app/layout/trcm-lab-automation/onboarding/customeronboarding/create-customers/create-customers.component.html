@@ -1,0 +1,106 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Create Customers'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Customers'" [icon]="'fa-edit'"></app-page-header>
+        <h6>Customer Details</h6>
+        <p>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div>
+                        <section class="tile">
+                            <div class="tile-body">
+                                <!-- <....................................customers onboarding..................................> -->
+                                <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" novalidate>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Customer Name *</label>
+                                        <input type="text" class="form-control" name="name" pattern="[a-zA-Z ]*"
+                                            [(ngModel)]="customers.name" #name="ngModel" placeholder="Customer Name"
+                                            required />
+                                        <div *ngIf="name.errors?.required && name.touched" class="validation-error">
+                                            Field is required</div>
+                                        <div *ngIf="name.errors?.pattern && name.touched" class="validation-error">
+                                            Please enter a valid name</div>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Phone Number *</label>
+                                        <input type="text" class="form-control" name="phone_number" pattern="^[0-9\-\+]{9,15}$"
+                                            ng-pattern="^\d{10}$" [(ngModel)]="customers.phone_number"
+                                            #phone_number="ngModel" placeholder="Phone number" required minlength="10"
+                                            maxlength="13" minlength="10" />
+                                        <div *ngIf="phone_number.errors?.required && phone_number.touched"
+                                            class="validation-error">Field is required</div>
+                                        <div *ngIf="phone_number.errors?.patternn && phone_number.touched"
+                                            class="validation-error">Please enter numbers Only</div>
+                                        <br>
+                                    </div>
+                                    <br>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Email *</label>
+                                        <input type="text" id="email" class="form-control"
+                                            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email"
+                                            [(ngModel)]="customers.email" #email="ngModel" placeholder="Email" required>
+                                        <div *ngIf="email.errors?.required && email.touched" class="validation-error">
+                                            Field is required</div>
+                                        <div *ngIf="email.errors?.pattern && email.touched" class="validation-error">
+                                            Please enter a valid email</div>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Contact Person *</label>
+                                        <input type="text" class="form-control" name="contact_person"
+                                            pattern="[a-zA-Z ]*" [(ngModel)]="customers.contact_person"
+                                            #contact_person="ngModel" placeholder="ContactPerson" required>
+                                        <div *ngIf="contact_person.errors?.required && contact_person.touched"
+                                            class="validation-error">Field is required</div>
+                                        <div *ngIf="contact_person.errors?.pattern && contact_person.touched"
+                                            class="validation-error">Please enter a valid contact Person Name </div>
+                                        <br>
+                                    </div> 
+                                    <br>   
+
+                                    <!-- drop-down to fetch information from database -->
+                                     <div class="form-group col-md-6">
+                                        <label>Country</label>
+                                        <select name="regionName" class="form-control" 
+                                        #country="ngModel"
+                                        [(ngModel)]="customers.country"
+                                        id="country" required>
+                                            <option *ngFor="let count of countries" value={{count.regionName}}>{{count.regionName}}</option>
+                                        </select>
+                                        <div *ngIf="country.errors?.required  && country.touched" class="validation-error">Field is required</div>
+                                    </div> 
+                                    
+                                    <div class="form-group col-md-6">
+                                        <label>Address</label>
+                                        <input type="text" class="form-control" name="address"
+                                            [(ngModel)]="customers.address" #address="ngModel"
+                                            placeholder="Physical Address" required>
+                                        <div *ngIf="address.errors?.required && address.touched"
+                                            class="validation-error">Field is required</div>
+                                        <br>
+                                    </div>
+                                    <div>
+                                        <br>
+                                        <div class="col-lg-8">
+                                            <button *ngIf="!isUpdate" [disabled]="!customerForm.form.valid"
+                                                type="submit" class="btn btn-success ">Save</button>
+                                            <button *ngIf="isUpdate" type="submit" class="btn btn-success ">Update
+                                                Customers </button>
+                                            <button [disabled]="!customerForm.form.valid" type="reset"
+                                                class="btn btn-warning ">Reset </button>
+                                                <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" >
+                                                        <a routerLink="javascript:void(0)" (click)="goBack()">back </a>
+                                                </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

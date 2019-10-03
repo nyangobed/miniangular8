@@ -1,0 +1,55 @@
+<div [@routerTransition]>    
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Device Whitelisting (Shipped)'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{templateUrl}}" class="btn btn-info pull-right">Download Template</a>
+                    </div>
+                </div>
+                <form (ngSubmit)="save(form)" #form="ngForm" role="form">
+                    <mat-card-header>
+                        <mat-card-title><h5>Terminal Model</h5></mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="row">
+                            <mat-form-field class="col-lg-6 col-md-6">
+                                <mat-select [(value)]="makeId" placeholder="Manufacturer" (selectionChange) = "loadModels()">
+                                    <mat-option  *ngFor="let make of makes" [value]="make.makeId">{{make.make}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="col-lg-6 col-md-6">
+                                <mat-select [(value)]="model.modelId" placeholder="Model">
+                                    <mat-option  *ngFor="let model of models" [value]="model.modelId">{{model.model}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-header>
+                        <mat-card-title><h5>Upload Terminals</h5></mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <input (change) = "disableElement(serialNo)" [(ngModel)] = "_uploadFile" #uploadFile  type="file" name="uploadFile" id="uploadFile" (change) = "fileSelected(uploadFile.files)" />
+                            </div>
+                            <mat-form-field class="col-lg-6 col-md-6">
+                                <input (change) = "disableElement(uploadFile)" matInput placeholder="Serial Number" maxlength="200" name="serialNo" id="serialNo" [(ngModel)]="model.serialNo" #serialNo="ngModel" />
+                            </mat-form-field>
+                        </div>
+                    </mat-card-content>
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-md-12">
+                            <div class="btn-group pull-right">
+                                <button type="reset" class="btn btn-default">Reset</button> 
+                                <button [disabled]="!form.form.valid" type="submit" class="btn btn-success">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

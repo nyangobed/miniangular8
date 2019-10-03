@@ -1,0 +1,57 @@
+<div [@routerTransition]>
+        <div class="page page-forms-wizard">
+            <app-page-header [heading]="'Create a new Role'" [icon]="'fa-edit'" *ngIf="!isUpdate"></app-page-header>
+            <app-page-header [heading]="'Update Role'" [icon]="'fa-edit'" *ngIf="isUpdate"></app-page-header>
+            <section class="tile">
+                    <button type="submit"  mat-raised-button color="primary" >
+                            <a routerLink="javascript:void(0)" (click)="goBack()">Return </a>
+                            <i class="fa fa-arrow-circle-left"></i>
+                    </button>
+                <div class="tile-body">
+                    <form (ngSubmit)="addRoles(rolesForm)" #rolesForm="ngForm" role="form">
+                        <div class="row col-lg-6">
+                            <mat-form-field class="form-group col-lg-12  pad-left-md">
+                                <label>User Role Name:</label>
+                                <input matInput [(ngModel)]="model.roleName" name="roleName" required="required"/>
+                            </mat-form-field>
+                            <mat-form-field class="form-group col-lg-12  pad-left-md">
+                                <label>Role Description:</label>
+                                <textarea matInput rows="3" [(ngModel)]="model.description" name="description" required="required"></textarea>
+                            </mat-form-field>
+                        </div>
+                        
+    
+                        <div class="row" *ngFor="let entss of entities">
+                            <div class="col-lg-12">
+                                <div class="card mb-3">
+                                    <div class="card-header tile-header bg-slategray">{{entss.entityName}}</div>
+                                    <div class="card-body">
+                                        <div class="row m-20">
+                                            <div class="checkbox col-sm-4" *ngFor="let perm of entss.ufsEntityPermissionList">
+                                                <input type="checkbox" value="{{perm.entityPermissionId}}" [(ngModel)]="perm.checked" [name]="perm.caption" />
+                                                <label>{{perm.caption}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        
+                        <div class="row">
+                            <div class="col-sm-8">
+                            </div>
+                            <div class="col-sm-4 pull-right">
+                                <!-- <input [disabled]="!rolesForm.form.valid" type="submit" value="Submit" class="btn btn-success btn-lg float-right text-white"> -->
+                                <button [disabled]="!rolesForm.form.valid" type="submit" class="btn btn-success  pull-left mb-3  btn-round" *ngIf="!isUpdate">Create Role</button>
+                            <button [disabled]="!rolesForm.form.valid" type="submit" class="btn btn-success  pull-left mb-3  btn-round" *ngIf="isUpdate">Update Role</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>       
+    
+    </div>

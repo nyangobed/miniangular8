@@ -1,0 +1,77 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Upload File'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <div class="container" style="width: 100%">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div>
+                                <form *ngIf="upload" role="form" action="" method="POST" [formGroup]="upload"
+                                    (ngSubmit)="uploadDoc()" enctype="multipart/form-data">
+                                    <div class="form-content">
+                                        <div class="form-group col-md-6">
+                                            <label>Client</label>
+                                            <select class="form-control input-underline input-lg"
+                                                formControlName="clientName" id="clientName" required>
+                                                <option *ngFor="let clients of client" value={{clients.name}}>
+                                                    {{clients.name}}</option>
+                                            </select>
+                                            <div *ngIf="(f.clientName.errors && f.clientName.touched) || submitted">
+                                                <div *ngIf="f.clientName.errors.required" class="validation-error">
+                                                    Select a client</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Received From</label>
+                                            <input type="text" formControlName="from"
+                                                class="form-control input-underline input-lg" id="from"
+                                                placeholder="{{ 'Add the person who handed over the devices' }}"
+                                                required>
+                                            <div *ngIf="(f.from.errors && f.from.touched) || submitted">
+                                                <div *ngIf="f.from.errors.required" class="validation-error">Add the
+                                                    client contact person</div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <br>
+                                        <div class="form-group col-md-6">
+                                            <label>Comment</label>
+                                            <input type="text" formControlName="comments"
+                                                class="form-control input-underline input-lg" id="comments"
+                                                placeholder="{{ 'Add a message regarding the file' }}" required>
+                                            <div *ngIf="(f.comments.errors && f.comments.touched) || submitted">
+                                                <div *ngIf="f.comments.errors.required" class="validation-error">Type a
+                                                    comment</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Upload CSV / Excel File</label>
+                                            <span>{{File ? File.name : 'or drag and drop file here' }}</span>
+                                            <input class="form-control input-underline input-lg" type="file" name="File"
+                                                (change)="onFileChange($event)" accept=".xlsx, .xls" #fileInput
+                                                required>
+                                            <div *ngIf="(f.File.errors && f.File.touched) || submitted">
+                                                <div *ngIf="f.File.errors.required" class="validation-error">Select a
+                                                    file</div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div style="display: block; justify-content: space-around;">
+                                        <button type="submit" mat-raised-button color="primary"
+                                            [disabled]="upload.invalid">Upload</button>
+                                        <button type="reset" mat-raised-button color="warn"
+                                            [disabled]="upload.invalid">Reset</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

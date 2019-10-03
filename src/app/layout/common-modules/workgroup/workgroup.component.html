@@ -1,0 +1,32 @@
+<div [@routerTransition]>
+    <div class="page page-forms-wizard">
+        <app-page-header [heading]="'Workgroup Management'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+                <button type="submit"  mat-raised-button color="primary" >
+                        <a routerLink="javascript:void(0)" (click)="goBack()">Return </a>
+                        <i class="fa fa-arrow-circle-left"></i>
+                </button>
+            <div class="tile-body">
+                <app-delete-component [addLabel]="'Add Workgroup'"
+                                      [addLink]="'common-modules/workgroups/create-workgroups'"
+                                      [approveLabel]="'Approve Workgroup'"
+                                      [approveLink]="'common-modules/workgroups/approve-workgroups'"
+                                      [deleteLabel]="'Delete Workgroup'"
+                                      [endpoint]="'ufs-common-modules/api/v1/workgroup'"></app-delete-component>
+                <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered row-border hover">
+                    <thead>
+                    <tr>
+                        <th class="select-checkbox" style="text-align :center"><input type="checkbox" class="select-all-checkbox border-#{000000}" /></th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Created</th>
+                        <th>Action</th>
+                        <th>Action Status</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

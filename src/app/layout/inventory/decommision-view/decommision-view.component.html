@@ -1,0 +1,29 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Decommission Device'" [icon]="'fa-check-square'"></app-page-header>
+        <section class="tile">            
+            <div class="tile-body">
+                <div class="row m-40">
+                    <app-viewentity [viewparam]="viewparam" [title]="'Details'" [subtitle]="device.serialNo"></app-viewentity>                    
+                </div>
+                <div class="clearfix"></div>
+                <div class="row m-40">
+                    <h5 class="text-center">Add notes below on why you are de-commissioning</h5>
+                    <mat-divider class="row m-20"></mat-divider>
+                </div>
+                <div class="row m-40">
+                    <form (ngSubmit)="processDecommission(decommissionForm)" #decommissionForm="ngForm"  role="form">
+                        <div class="form-group col-lg-12 col-md-12">
+                            <label>Notes : </label>
+                            <textarea class="form-control" placeholder="Notes" name="decommissionNotes" maxlength="500" required="" rows="3" [(ngModel)]="model.notes"></textarea>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12">
+                            <button type="submit" [disabled]="!decommissionForm.form.valid" class="btn btn-success pull-right">Decommission</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

@@ -1,0 +1,80 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Set Warranty'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Set Warranty'" [icon]="'fa-edit'"></app-page-header>
+        <h6>Warranty Details</h6>
+        <p>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div>
+                        <section class="tile">
+                            <div class="tile-body">
+                                <!-- <....................................set warranty..................................> -->
+                                <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" novalidate>
+                                  <!-- drop-down to fetch information from database -->
+                                     <div class="form-group col-md-6">
+                                        <label>Customer Name</label>
+                                        <select name="name" class="form-control"  [(ngModel)]="customers.deviceowner"
+                                        #deviceowner="ngModel"
+                                            id="deviceowner" required>
+                                            <option *ngFor="let nam of names" value="{{nam.name}}">{{nam.name}}</option>
+                                        </select>
+                                        <div *ngIf="deviceowner.errors?.required  && deviceowner.touched" class="validation-error">Field is required</div>
+                                    </div> 
+                                    <div class="form-group col-md-6">
+                                        <label>Year* (Last 2 Digits)</label>
+                                        <input type="text" class="form-control" name="year" pattern="[0-9]*"
+                                            [(ngModel)]="customers.year" #year="ngModel" placeholder="year" 
+                                            maxlength="2" minlength="2"
+                                            required />
+                                        <div *ngIf="year.errors?.required && year.touched" class="validation-error">
+                                            Field is required</div>
+                                        <div *ngIf="year.errors?.pattern && year.touched" class="validation-error">
+                                            Please enter a valid year</div>
+                                           
+                                            <br>
+                                    </div> 
+                                     <br>
+                                    <div class="form-group col-md-6">
+                                        <label>Warranty Period *</label>
+                                        <input type="text" class="form-control" name="warrantyperiod"
+                                            pattern="[0-9]*" [(ngModel)]="customers.warrantyperiod"
+                                            #warrantyperiod="ngModel" placeholder="warranty period (in Months)" required>
+                                        <div *ngIf="warrantyperiod.errors?.required && warrantyperiod.touched"
+                                            class="validation-error">Field is required</div>
+                                        <div *ngIf="warrantyperiod.errors?.pattern && warrantyperiod.touched"
+                                            class="validation-error">Please enter a valid contact warranty period  </div>
+                                     
+                                    </div> 
+                                 
+                                    <div class="form-group col-md-6">
+                                        <label>Warranty Starts</label>
+                                        <input type="date" class="form-control" name="warranty_starts"
+                                            [(ngModel)]="customers.warranty_starts" #warranty_starts="ngModel" min="2018-06-01"
+                                            placeholder="warranty starts" required>
+                                        <div *ngIf="warranty_starts.errors?.required && warranty_starts.touched"
+                                            class="validation-error">Field is required</div>
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <br>
+                                        <div class="col-lg-8">
+                                            <button *ngIf="!isUpdate" [disabled]="!customerForm.form.valid"
+                                                type="submit" class="btn btn-success ">Set Warranty</button>
+                                           
+                                            <button [disabled]="!customerForm.form.valid" type="reset"
+                                                class="btn btn-warning ">Reset </button>
+                                                <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" >
+                                                        <a routerLink="javascript:void(0)" (click)="goBack()">back </a>
+                                                </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

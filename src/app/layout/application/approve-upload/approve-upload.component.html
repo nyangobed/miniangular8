@@ -1,0 +1,29 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Approve Applications'" [icon]="'fa-check-square'"></app-page-header>
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">                
+                <app-checker-actions [endpoint]="'app-management'"></app-checker-actions>
+            </div>
+            <div class="tile-body"> 
+                <table id="checker-table" datatable [dtOptions]="dtOptions" class="row-border hover">
+                       <thead>
+                        <tr>
+                            <th class="select-checkbox" style="text-align :center"><input type="checkbox" class="select-all-checkbox border-#{000000}" /></th>
+                            <th>Product</th>
+                            <th>Model</th>
+                            <th>Name</th>
+                            <th>Version</th>
+                            <th>File Path</th>
+                            <th>Action</th>
+                            <th>Action Status</th>
+                            <th>Release Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

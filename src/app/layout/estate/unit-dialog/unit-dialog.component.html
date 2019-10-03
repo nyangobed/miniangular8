@@ -1,0 +1,14 @@
+<h4 mat-dialog-title *ngIf="!isUpdate">Add Hierarchy</h4>
+<h4 mat-dialog-title *ngIf="isUpdate">Update Hierarchy</h4>
+<form (ngSubmit)="submithierarchy(unitForm)" #unitForm="ngForm" role="form">
+    <div class="row">
+        <mat-form-field class="col-lg-12">
+            <input matInput placeholder="Unit Name" name="unitName" id="unitName" [(ngModel)]="model.unitName" required/>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <button mat-raised-button type="button" class="btn btn-default mr-10" mat-dialog-close>Close</button>
+        <button *ngIf="!isUpdate" mat-raised-button type="submit" [disabled]="!unitForm.form.valid" class="btn btn-success text-white">Add Organization Hierarchy</button>
+        <button *ngIf="isUpdate" mat-raised-button type="submit" [disabled]="!unitForm.form.valid" class="btn btn-success text-white">Update Organization Hierarchy</button>
+    </div>
+</form>

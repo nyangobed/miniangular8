@@ -1,0 +1,28 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Devices Whitelist (Shipped)'" [icon]="'fa-check-square'"></app-page-header>
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">                
+                <div class="row">
+                    <app-maker-actions [dtOptions] = "dtOptions" [confirm]="true" [confirmLink]="'whitelist/confirmation'" [confirmLabel]="'Confirm Whitelist'" [addLink] = "'whitelist/whitelisting'" [addLabel] = "'Upload Whitelist'" [endpoint] = "'device/whitelist'" [approveLabel]="'Approve Whitelists'" [approveLink]="'whitelist/approve'" [deleteLabel] = "'Delete Device'"></app-maker-actions>
+                </div>
+            </div>
+            <div class="tile-body">  
+                <table id="list-make-table" #makeTable datatable [dtOptions]="dtOptions" class="table table-custom dt-responsive">
+                       <thead>
+                        <tr>
+                            <th class="select-checkbox" style="text-align :center"><input type="checkbox" class="select-all-checkbox border-#{000000}" /></th>
+                            <th>Serial Number</th>
+                            <th>Model</th>
+                            <th>Action</th>
+                            <th>Action Status</th>
+                            <th>Creation Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

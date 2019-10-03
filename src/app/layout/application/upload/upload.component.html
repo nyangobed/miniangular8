@@ -1,0 +1,61 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Application Upload'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <form (ngSubmit)="save(appForm)" #appForm="ngForm" role="form">
+                    <div class="row">
+                        <mat-form-field class="col-md-6">
+                            <label>Manufacturer </label>
+                            <mat-select [(value)]="makeId" placeholder="Manufacturer" (change) = "loadModels()" required="">
+                                <mat-option  *ngFor="let make of makes" [value]="make.makeId">{{make.make}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-6">
+                            <label>Model </label>
+                            <mat-select [(value)]="model.modelId" placeholder="Model" required="">
+                                <mat-option  *ngFor="let model of models" [value]="model.modelId">{{model.model}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field class="col-md-6">
+                            <label>Business Unit </label>
+                            <mat-select [(value)]="model.productId" placeholder="Business Unit" required="">
+                                <mat-option  *ngFor="let product of products" [value]="product.productId">{{product.productName}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <div class="form-group col-md-6">
+                            <label>Application Name </label>
+                            <input placeholder="Application Name" maxlength="100" name="appName" id="appName" required="" [(ngModel)]="model.appName" #appName="ngModel" class="form-control"  required="required"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>appVersion </label>
+                            <input placeholder="appVersion" maxlength="50" name="appVersion" id="appVersion" required="" [(ngModel)]="model.appVersion" #appVersion="ngModel" class="form-control"  required="required"/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Application: </label>
+                            <input [(ngModel)] = "_application" #application placeholder="Application" type="file" name="application" id="application" (change) = "fileSelected(application.files)" class="form-control" required="required"/>
+                            <small>NOTE: The Zip file should not contain subdirectories, SHOULD BE FILES ONLY ZIPPED</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Description </label>
+                            <textarea placeholder="Description" maxlength="500" rows="5" name="description" id="description" [(ngModel)]="model.description" #description="ngModel"  class="form-control"  required="required"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="btn-group pull-right mr-20">
+                            <button type="reset" class="btn btn-default">Reset</button>
+                            <button [disabled]="!appForm.form.valid" type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

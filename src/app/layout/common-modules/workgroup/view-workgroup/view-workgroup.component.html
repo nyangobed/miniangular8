@@ -1,0 +1,32 @@
+<div [@routerTransition]>
+    <div class="page page-forms-wizard">
+        <app-page-header [heading]="'View Workgroup'" [icon]="'fa-eye'"></app-page-header>
+        <section class="tile">
+                <button type="submit"  mat-raised-button color="primary" >
+                        <a routerLink="javascript:void(0)" (click)="goBack()">Return </a>
+                        <i class="fa fa-arrow-circle-left"></i>
+                </button>
+            <div class="tile-body">
+                <app-viewentity class='row'[viewparam]="viewparam" [title]="'Workgroups View'" [subtitle]="model.groupName"></app-viewentity>
+
+
+                <div class="row" >
+                    <div class="col-lg-12">
+                        <div class="card mb-3">
+                            <div class="card-header tile-header bg-slategray">View Assigned Roles</div>
+                            <div class="card-body">
+                                <div class="row m-20">
+                                    <div class="checkbox col-sm-4" *ngFor="let role of roles">
+                                        <input type="checkbox" value="{{role.roleId}}" [(ngModel)]="role.checked" [name]="role.roleId" disabled>
+                                        <label>{{role.roleName}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>

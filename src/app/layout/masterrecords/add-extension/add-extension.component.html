@@ -1,0 +1,40 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Device Model Config Parameter Extension'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <form (ngSubmit)="save(appForm)" #appForm="ngForm" role="form">  
+                    <div class="row">
+                        <mat-form-field class="col-md-6">
+                            <label>Manufacturer </label>
+                            <mat-select [(value)]="makeId" placeholder="Manufacturer" (change) = "loadModels()" required="">
+                                <mat-option  *ngFor="let make of makes" [value]="make.makeId">{{make.make}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-6">
+                            <label>Model </label>
+                            <mat-select [(value)]="model.modelId" placeholder="Model" required="">
+                                <mat-option  *ngFor="let model of models" [value]="model.modelId">{{model.model}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field class="col-md-6">
+                            <label>Extension Type </label>
+                            <mat-select [(value)]="model.paramFileExt" placeholder="Extension Type" required="">
+                                <mat-option  [value]="'.txt'">.TXT</mat-option>
+                                <mat-option  [value]="'.PAR'">.PAR</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>                    
+                    <div class="row">
+                        <div class="btn-group pull-right mr-20">
+                            <button type="reset" class="btn btn-default">Reset</button> 
+                            <button [disabled]="!appForm.form.valid" type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

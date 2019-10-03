@@ -1,0 +1,47 @@
+<div [@routerTransition]>
+  <div class="page page-dashboard">
+      <app-page-header *ngIf="!isUpdate" [heading]="'Create POS Models'" [icon]="'fa-edit'"></app-page-header>
+      <app-page-header *ngIf="isUpdate" [heading]="'Update POS Models'" [icon]="'fa-edit'"></app-page-header>
+      <h6>POS Models Details</h6>
+      <p>
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <div>
+                      <section class="tile">
+                          <div class="tile-body">
+                              <!-- <....................................Terminal Models onboarding..................................> -->
+                              <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" novalidate>
+
+                                  <div class="form-group col-md-6">
+                                      <label>Device Model *</label>
+                                      <input type="text" class="form-control" name="name" 
+                                          [(ngModel)]="devices.name" #name="ngModel" placeholder="Device Model"
+                                          required />
+                                      <div *ngIf="name.errors?.required && name.touched" class="validation-error">
+                                          Field is required</div>
+                                      <!-- <div *ngIf="name.errors?.pattern && name.touched" class="validation-error">
+                                          Please enter a valid name</div> -->
+                                  </div>                      
+
+                                  <div>
+                                      <br>
+                                      <div class="col-lg-8">
+                                          <button *ngIf="!isUpdate" [disabled]="!customerForm.form.valid"
+                                              type="submit" class="btn btn-success ">Save</button>
+                                          <button *ngIf="isUpdate" type="submit" class="btn btn-success ">Update
+                                            Terminal Models </button>
+                                          <button [disabled]="!customerForm.form.valid" type="reset"
+                                              class="btn btn-warning ">Reset </button>
+                                              <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" >
+                                                      <a routerLink="javascript:void(0)" (click)="goBack()">back </a>
+                                              </button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+          </div>
+  </div>
+</div>

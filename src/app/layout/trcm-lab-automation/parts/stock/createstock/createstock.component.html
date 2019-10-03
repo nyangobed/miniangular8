@@ -1,0 +1,63 @@
+<div [@routerTransition]>
+  <div class="page page-dashboard">
+      <app-page-header *ngIf="!isUpdate" [heading]="'Stock Management'" [icon]="'fa-edit'"></app-page-header>
+      <app-page-header *ngIf="isUpdate" [heading]="'Update Stock Management'" [icon]="'fa-edit'"></app-page-header>
+      <h6>Stock Details</h6>
+      <p>
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <div>
+                      <section class="tile">
+                          <div class="tile-body">
+                              <!-- <....................................parts onboarding..................................> -->
+                                <form *ngIf="upload" role="form" [formGroup]="upload" (ngSubmit)="Onsubmit()">
+
+                                <div class="form-group col-md-6">
+                                  <label>Part number </label>
+                                  <select name="partnumber" class="form-control" formControlName="partnumber"
+                                      id="partnumber" required>
+                                      <option *ngFor="let nam of names" value="{{nam.partnumber}}">{{nam.partnumber}}</option>
+                                  </select>
+                                  <div *ngIf="(f.partnumber.errors && f.partnumber.touched)||submitted ">
+                                      <div *ngIf="f.partnumber.errors.required" class="validation-error">Please
+                                          choose  part number</div>
+                                  </div>
+
+                              </div>
+                                  
+ 
+                            
+                                <div class="form-group col-md-6">
+                                  <label>Opening Stock</label>
+                                  <input type="text" class="form-control" formControlName="openingstock"
+                                     id="openingstock" placeholder="{{ 'opening stock' }}" pattern= "[0-9]*" required>
+                                  <div *ngIf="(f.openingstock.errors && f.openingstock.touched)||submitted ">
+                                      <div *ngIf="f.openingstock.errors.required" class="validation-error">Enter opening stock</div>
+                                      <div *ngIf="f.openingstock.errors.pattern" class="validation-error">Enter a valid opening stock</div>
+                                  </div>                                   
+                              </div>                               
+                                  <div class="col-lg-8">
+                                    <button type="submit" class="btn btn-primary" [disabled]="!upload.valid">Save</button>
+                                    <button type="reset" class="btn btn-warning"
+                                        [disabled]="!upload.valid">Reset</button>
+                                        <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" >
+                                                <a routerLink="javascript:void(0)" (click)="goBack()">back </a>
+                                        </button>
+                                </div>
+                              </form>                                 
+                          </div>
+                          <br><br>
+                        </section>
+                      </div>
+                  </div>
+              </div>
+      </div>
+  </div>
+
+     
+
+
+
+
+    
+

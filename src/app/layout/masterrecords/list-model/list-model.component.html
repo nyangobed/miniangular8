@@ -1,0 +1,29 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Device Models'" [icon]="'fa-check-square'"></app-page-header>
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <app-maker-actions [dtOptions] = "dtOptions" [confirm]="true" [confirmLink]="'masterrecords/add-extension'" [confirmLabel]="'File Extension'" [addLink] = "'masterrecords/device-model'" [addLabel] = "'Add Model'" [approveLabel]="'Approve Model'" [approveLink]="'masterrecords/device-model/approve'" [endpoint] = "'device/model'" [deleteLabel] = "'Delete Model'"></app-maker-actions>
+            </div>
+            <div class="tile-body">
+                <table id="list-make-table" #makeTable datatable [dtOptions]="dtOptions" class="row-border hover">
+                       <thead>
+                        <tr>
+                            <th class="select-checkbox" style="text-align :center"><input type="checkbox" class="select-all-checkbox border-#{000000}" /></th>
+                            <th>Model</th>
+                            <th>Device Type</th>
+                            <th>Manufacturer</th>
+                            <th>File Extension</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                            <th>Action Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

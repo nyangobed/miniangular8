@@ -1,0 +1,51 @@
+<div [@routerTransition]>
+  <div class="page page-dashboard">
+    <app-page-header *ngIf="!isUpdate" [heading]="'Set Contract Details'" [icon]="'fa-edit'"></app-page-header>
+    <app-page-header *ngIf="isUpdate" [heading]="'Update Contract/AMC'" [icon]="'fa-edit'"></app-page-header>
+    <h6>Change Contract Agreement </h6>
+    <p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div>
+            <section class="tile">
+              <div class="tile-body">
+
+                <!-- <....................................set contract details..................................> -->
+
+                <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" novalidate>
+
+                  <div class="form-group col-md-6">
+                    <label>Change AMC/Contract *</label>
+                    <input type="text" class="form-control" name="contractperiod" pattern="[0-9]*"
+                      [(ngModel)]="devices.contractperiod" #contractperiod="ngModel" placeholder="contract period"
+                      required />
+                    <div *ngIf="contractperiod.errors?.required && contractperiod.touched" class="validation-error">
+                      Field is required</div>
+                    <div *ngIf="contractperiod.errors?.pattern && contractperiod.touched" class="validation-error">
+                      Please enter a valid contract period</div>
+                  </div>
+
+                  <div>
+                    <br>
+                    <div class="col-lg-8">
+                      <button *ngIf="!isUpdate" [disabled]="!customerForm.form.valid" type="submit"
+                        class="btn btn-success ">Save</button>
+
+                      <button *ngIf="isUpdate" [disabled]="!customerForm.form.valid" type="submit"
+                        class="btn btn-success ">Set AMC </button>
+
+                      <button [disabled]="!customerForm.form.valid" type="reset" class="btn btn-warning ">Reset
+                      </button>
+                    </div>
+
+                  </div>
+                </form>
+
+              </div>
+
+            </section>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

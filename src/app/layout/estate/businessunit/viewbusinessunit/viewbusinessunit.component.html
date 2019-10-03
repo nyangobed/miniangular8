@@ -1,0 +1,4 @@
+<div [@routerTransition]>
+    <app-page-header *ngIf="!isUpdate" [heading]="'View Business Unit'" [icon]="'fa-edit'"></app-page-header>
+    <app-viewentity [viewparam]="viewparam" [title]="'Business Details'" [subtitle]="model.unitName"></app-viewentity>
+</div>

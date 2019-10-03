@@ -1,0 +1,107 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="isUpdate" [heading]="'Update'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="!isUpdate" [heading]="'View'" [icon]="'fa-check'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <div class="container">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                <div class="form-content">
+                                    <div class="form-group col-md-6">
+                                        <label>PCBA P/N</label>
+                                        <input type="text" formControlName="pcba_pn"
+                                            class="form-control input-underline input-lg" id="pcba_pn"
+                                            placeholder="Add a PCB P/N"
+                                            style="border-style:outset; overflow: hidden; border-radius: 4px;" required>
+                                        <div *ngIf="(f.pcba_pn?.errors && f.pcba_pn?.touched) || submitted">
+                                            <div *ngIf="f.pcba_pn?.errors.required" class="validation-error">Add a PCB
+                                                P/N</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>PCBA S/N</label>
+                                        <input type="text" formControlName="pcba_sn"
+                                            class="form-control input-underline input-lg" id="pcba_sn"
+                                            placeholder="Add a PCB S/N" style="border-style:outset; border-radius: 4px;"
+                                            required>
+                                        <div *ngIf="(f.pcba_sn?.errors && f.pcba_sn?.touched) || submitted">
+                                            <div *ngIf="f.pcba_sn?.errors.required" class="validation-error">Add a PCB
+                                                S/N</div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <div class="form-group col-md-6">
+                                        <label>Board Defect</label>
+                                        <input type="text" formControlName="board_defect"
+                                            class="form-control input-underline input-lg" id="board_defect"
+                                            placeholder="Add a Board Defect"
+                                            style="border-style:outset; overflow: hidden; border-radius: 4px;">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>PKI Version</label>
+                                        <input type="text" formControlName="pki_version"
+                                            class="form-control input-underline input-lg" id="pki_version"
+                                            placeholder="Add the PKI Version"
+                                            style="border-style:outset; border-radius: 4px;">
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <div class="form-group col-md-6">
+                                        <label>Mac ID</label>
+                                        <input type="text" formControlName="mac_id"
+                                            class="form-control input-underline input-lg" id="mac_id"
+                                            placeholder="Add a MAC ID" style="border-style:outset; border-radius: 4px;">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>BT Address</label>
+                                        <input type="text" formControlName="bt_address"
+                                            class="form-control input-underline input-lg" id="bt_address"
+                                            placeholder="Add BT Address"
+                                            style="border-style:outset; border-radius: 4px;">
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <div class="form-group col-md-6">
+                                        <label>WIFI</label>
+                                        <input type="text" formControlName="wifi"
+                                            class="form-control input-underline input-lg" id="wifi"
+                                            placeholder="Add WIFI" style="border-style:outset; border-radius: 4px;">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Printer Type</label>
+                                        <input type="text" formControlName="printer_type"
+                                            class="form-control input-underline input-lg" id="printer_type"
+                                            placeholder="Add the Printer Type"
+                                            style="border-style:outset; border-radius: 4px;">
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <div class="form-group col-md-6">
+                                        <label>Note</label>
+                                        <input type="text" formControlName="note"
+                                            class="form-control input-underline input-lg" id="note"
+                                            placeholder="Add a note"
+                                            style="border-style:outset; overflow: hidden; border-radius: 4px;">
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12 pull-right">
+                                            <button type="submit" *ngIf="isUpdate" mat-raised-button
+                                                color="primary">Update</button>
+                                            <button type="reset" mat-raised-button color="warn">Reset</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

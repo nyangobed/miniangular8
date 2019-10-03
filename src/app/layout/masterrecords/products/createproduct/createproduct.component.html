@@ -1,0 +1,31 @@
+<div [@routerTransition]>        
+    <div class="page page-forms-wizard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Add Business Unit'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Business Unit'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <form (ngSubmit)="onCreateProduct(createForm)" #createForm="ngForm" role="form"> 
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Business Unit Name</label>
+                            <input class="form-control" [(ngModel)]="model.productName" type="text" name="productName" required="required"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="3" [(ngModel)]="model.description" name="description" required="required"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="btn-group col-lg-12">
+                            <button *ngIf="!isUpdate" [disabled]="!createForm.form.valid" type="submit" class="btn btn-success pull-right">Save Business Unit</button>
+                            <button *ngIf="isUpdate" [disabled]="!createForm.form.valid" type="submit" class="btn btn-success pull-right">Update Business Unit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

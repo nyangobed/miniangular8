@@ -1,0 +1,35 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Bank Regions'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+                <button type="submit"  mat-raised-button color="primary" >
+                        <a routerLink="javascript:void(0)" (click)="goBack()">Return </a>
+                        <i class="fa fa-arrow-circle-left"></i>
+                </button>
+            <div class="tile-body">
+                <app-delete-component [addLabel]="'Add Bank Region'"
+                                      [addLink]="'common-modules/master-data/bank-regions/create-bank-regions'"
+                                    
+                                      [approveLabel]="'Approve Bank Regions'"
+                                      [approveLink]="'common-modules/master-data/bank-regions/approve-bank-regions'"
+                                      [deleteLabel]="'Delete Bank Regions'"
+                                      [endpoint]="'atlas/bank_regions'">
+
+                </app-delete-component>
+                <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered row-border hover">
+                    <thead>
+                    <tr>
+                        <th class="select-checkbox" style="text-align :center"><input type="checkbox" class="select-all-checkbox border-#{000000}"/>
+                        </th>
+                        <th>Branch Name</th>
+                        <th>Code</th>
+                        <th>Created On</th>
+                        <th>Action Status</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

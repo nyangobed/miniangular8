@@ -1,0 +1,96 @@
+
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Add Tools'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Parts'" [icon]="'fa-edit'"></app-page-header>
+        <h6>Tools Details</h6>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <section class="tile">
+            <div class="tile-body">
+        <!-- <div class="container"> -->
+          
+                            <form *ngIf="addParts" role="form" action="" method="POST" #partsForm="ngForm" [formGroup]="addParts" (ngSubmit)="onSubmit()">
+                                    <div class="form-content" >
+                            
+                                        <div class="form-group col-md-6" >
+                                            <label>Part Name</label>
+                                            <input type="text" formControlName="partName" class="form-control input-underline input-lg" id="name" placeholder="{{ 'Part Name' }}" required>
+                                            <div *ngIf="(f.partName.errors && f.partName.touched) || submitted">
+                                                <div *ngIf="f.partName.errors.required" class="validation-error">Part Name is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Part Model</label>
+                                            <input type="text" formControlName="partModel" class="form-control input-underline input-lg" id="model" placeholder="{{ 'Part Model' }}"  required>
+                                            <div *ngIf="(f.partModel.errors && f.partModel.touched) || submitted">
+                                                <div *ngIf="f.partModel.errors.required" class="validation-error">Part Model is required</div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <br>
+                                        <div class="form-group col-md-6">
+                                            <label>Part Number</label>
+                                            <input type="number" formControlName="partNumber" class="form-control input-underline input-lg" id="partNumber" placeholder="{{ 'Part Number' }}" required>
+                                            <div *ngIf="(f.partNumber.errors && f.partNumber.touched) || submitted">
+                                                    <div *ngIf="f.partNumber.errors.required" class="validation-error">Part Model is required</div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="form-group col-md-6">
+                                            <label>Part Description</label>
+                                            <input type="text" formControlName="description" class="form-control input-underline input-lg" id="PartDescription" placeholder="{{ 'Part Description' }}"  required>
+                                            <div *ngIf="(f.description.errors && f.description.touched) || submitted">
+                                                    <div *ngIf="f.description.errors.required" class="validation-error">Part Model is required</div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <br>
+                                        <!-- <div class="form-group col-md-6">
+                                            <label>Quantity</label>
+                                            <input type="number" formControlName="quantity" class="form-control input-underline input-lg" id="Quantity" placeholder="{{ 'Quantity' }}"  required>
+                                            <div *ngIf="(f.quantity.errors && f.quantity.touched) || submitted">
+                                                    <div *ngIf="f.quantity.errors.required" class="validation-error">Part Model is required</div>
+                                            </div>
+                                        </div> -->
+                                        <!-- <div class="form-group col-md-6">
+                                                <label>Manufacturer</label>
+                                                <input type="text" formControlName="manufacturerName" class="form-control input-underline input-lg" id="Manufacturer" placeholder="{{ 'Manufacturer' }}"  required>
+                                                <div *ngIf="(f.manufacturerName.errors && f.manufacturerName.touched)|| submitted">
+                                                        <div *ngIf="f.manufacturerName.errors.required" class="validation-error">Part Model is required</div>
+                                                </div>
+                                                <br>
+                                            </div> -->
+
+
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Manufacturer Name</label>
+                                                    <select name="manufacturer" class="form-control" formControlName="manufacturerName" id="manufacturerName"  required>
+                                                        <option  *ngFor="let manuf of names" value={{manuf.manufacturer}} >{{manuf.manufacturer}}</option>
+                                                    </select>
+                                                    <div *ngIf="(f.manufacturerName.errors && f.manufacturerName.touched)||submitted ">
+                                                    <div *ngIf="f.manufacturerName.errors.required" class="validation-error">Manufacturer is required</div>  
+                                                 </div>
+                                            </div>
+                                            </div>
+                                            <br>
+                                    </div>
+                                    <button *ngIf="!isUpdate" [disabled]="addParts.invalid" type="submit" class="btn btn-success ">Save</button>
+                              
+                                    <button *ngIf="isUpdate" [disabled]="addParts.invalid" type="submit" class="btn btn-success ">Update Parts  </button> 
+                               
+                                    <button [disabled]="addParts.invalid" type="reset" class="btn btn-warning ">Reset  </button>
+                                     
+                                   
+                                  </form>
+                    <!-- </div> -->
+               
+        </div>
+    </section> 
+</div>
+</div>
+</div>
+    </div>
+</div>

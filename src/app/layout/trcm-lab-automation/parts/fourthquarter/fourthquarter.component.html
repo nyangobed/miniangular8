@@ -1,0 +1,30 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Fourth Quarter Parts'" [icon]="'fa-edit'" >
+        </app-page-header>
+        <section class="tile">
+            <button type="save" class="btn btn-secondary" >
+                <a routerLink="javascript:void(0)" (click)="goBack()">Back </a>
+        </button>
+        <!-- <div class="row">              
+                <div class="form-group col-md-2">
+                 <label>Start Date</label>
+                <input type="date" class="form-control" formControlName="createdOn" name="createdOn" required>            
+                </div>
+                <div class="form-group col-md-2">
+                <label>End Date</label>
+                <input type="date" class="form-control" formControlName="createdOn" name="createdOn" required>     
+                </div>
+                <br>
+                <button type="button" class="btn btn-primary btn-rounded waves-effect"(click)="getFilter()">Filter By date</button>        
+       </div>  -->
+            <div class="tile-body">
+                 
+                <table datatable [dtOptions]="dtOptions"  class="table table-striped table-bordered row-border hover">
+                     
+                </table>
+              </div>
+           
+          </section>  
+        </div>
+  </div>

@@ -1,0 +1,12 @@
+<mat-card-content>
+    <div class="row col-lg-12">
+        <div *ngFor="let param of viewparam" class="col-lg-12">
+            <p class="h6">{{param.label | capitalize}}</p>
+            <p class="text-muted" *ngIf="param.label=='creationdate'"> <small>
+                    <td-markdown> >{{param.value |date}}</td-markdown>
+                </small> </p>
+            <p class="text-muted" *ngIf="param.label!='creationdate'"> <small>
+                    <td-markdown> >{{param.value }}</td-markdown></small> </p>
+        </div>
+    </div>
+</mat-card-content>

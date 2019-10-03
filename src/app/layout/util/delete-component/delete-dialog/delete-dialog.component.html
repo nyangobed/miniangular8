@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-md-12">
+        <form (ngSubmit)="processAction(makerForm)" #makerForm="ngForm"  role="form">
+            <h4 mat-dialog-title>{{deleteLabel}}</h4>
+            <mat-dialog-content>
+                <div class="row" style="width: 100%;">
+                    <mat-form-field  style="width: 100%;">
+                        <label>Notes:</label>
+                        <textarea matInput placeholder="Notes" name="notes" maxlength="500" required="" rows="5" [(ngModel)]="checkerActions.notes"></textarea>
+                    </mat-form-field>
+                </div>
+            </mat-dialog-content>
+            <mat-dialog-actions style="width: 100%;">
+                <button mat-button type="button" class="btn btn-secondary mr-10" mat-dialog-close>Close</button>
+                <button mat-button type="submit" [disabled]="!makerForm.form.valid" class="btn btn-danger"><span class="text-white">{{deleteLabel}}</span></button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+</div>

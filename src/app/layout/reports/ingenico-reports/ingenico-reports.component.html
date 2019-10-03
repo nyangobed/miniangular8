@@ -1,0 +1,40 @@
+<div [@routerTransition]>
+  <div class="page page-forms-wizard">
+      <app-page-header [heading]="'Ingenico Reports'" [icon]="'fa-check-square'"></app-page-header>
+      <section class="tile">
+          <div class="tile-body">
+              <a routerLink="javascript:void(0)" (click)="goBack()">
+                  <i class="fa fa-arrow-circle-left"></i>
+                  <button mat-raised-button color="primary">Back</button>
+              </a>
+              <hr>
+              <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered row-border hover"
+                  style="width:100%; padding-top: 3em; margin: auto;">
+                  <thead>
+                      <tr>
+                          <th class="select-checkbox" style="text-align :center">
+                              <input type="checkbox" class="select-all-checkbox border-#{000000}" />
+                          </th>
+                          <th>Client</th>
+                          <th>PCBA P/N</th>
+                          <th>PCBA S/N</th>
+                          <th>Board Defect</th>
+                          <th>Terminal S/N</th>
+                          <th>Terminal P/N</th>
+                          <th>PKI Version</th>
+                          <th>Mac ID</th>
+                          <th>IMEI</th>
+                          <th>BT Address</th>
+                          <th>WIFI</th>
+                          <th>Printer Type</th>
+                          <th>Note</th>
+                          <th>Date</th>
+                          <th>Action Status</th>
+                          <th></th>
+                      </tr>
+                  </thead>
+              </table>
+          </div>
+      </section>
+  </div>
+</div>

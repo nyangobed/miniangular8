@@ -1,0 +1,88 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Assign Technicians'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <div class="container" style="width: 100%">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div>
+                                <form [formGroup]="assign" (ngSubmit)="onSubmit()">
+                                    <div class="form-content">
+                                        <div formGroupName="devices" class="form-group">
+                                            <div class="form-group col-md-6">
+                                                <label>Serial Number</label>
+                                                <input type="text" id="serialnumber" formControlName="serialnumber"
+                                                    class="form-control input-underline input-lg"
+                                                    style="border-style:outset; border-radius: 4px;">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Part Number</label>
+                                                <input type="text" id="partnumber" formControlName="partnumber"
+                                                    class="form-control input-underline input-lg"
+                                                    style="border-style:outset; border-radius: 4px;">
+                                                <br>
+                                            </div>
+                                            <br>
+                                            <div class="form-group col-md-6">
+                                                <label>Client</label>
+                                                <input type="text" id="deviceowner" formControlName="deviceowner"
+                                                    class="form-control input-underline input-lg"
+                                                    style="border-style:outset; border-radius: 4px;">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Repair Levels</label>
+                                            <input type="text" id="levels" formControlName="levels"
+                                                class="form-control input-underline input-lg" placeholder="Add a Level"
+                                                style="border-style:outset; border-radius: 4px;">
+                                            <br>
+                                        </div>
+                                        <br>
+                                        <div class="form-group col-md-6">
+                                            <label>Repair Centre</label>
+                                            <select class="form-control input-underline input-lg" formControlName="repairCentre"
+                                                required>
+                                                <option value="">--</option>
+                                                <option value={{centre}} *ngFor="let centre of repairCentre">{{centre}}</option>
+                                            </select>
+                                        <div *ngIf="(f.repairCentre?.errors && f.repairCentre?.touched) || submitted">
+                                            <div *ngIf="f.repairCentre?.errors.required" class="validation-error">Select a
+                                                Repair Centre</div>
+                                        </div>
+                                    </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Select Technician</label>
+                                            <select class="form-control input-underline input-lg"
+                                                formControlName="users" required>
+                                                <option value="">--</option>
+                                                <option value={{users.userId}} *ngFor="let users of user">
+                                                    {{users.fullName}}
+                                                </option>
+                                            </select>
+                                            <div *ngIf="(f.users?.errors && f.users?.touched) || submitted">
+                                                <div *ngIf="f.users?.errors.required" class="validation-error">
+                                                    Select a User, Please</div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <br>
+                                        <div>
+                                            <button type="submit" mat-raised-button color="primary"
+                                                [disabled]="assign.invalid">Update</button>
+                                            <button type="reset" mat-raised-button color="warn"
+                                                [disabled]="assign.invalid">Reset</button>
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

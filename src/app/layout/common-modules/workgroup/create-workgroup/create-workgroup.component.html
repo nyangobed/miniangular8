@@ -1,0 +1,52 @@
+<div [@routerTransition]>
+    <div class="page page-forms-wizard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Create a new Workgroup'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Workgroup'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+                <button type="submit"  mat-raised-button color="primary" >
+                        <a routerLink="javascript:void(0)" (click)="goBack()">Return </a>
+                        <i class="fa fa-arrow-circle-left"></i>
+                </button>
+            <div class="tile-body">
+                <form (ngSubmit)="addWorkgroups(workgroupsForm)" #workgroupsForm="ngForm" role="form">
+                    <div class="row col-lg-6">
+                        <mat-form-field class="form-group col-lg-12  pad-left-md">
+                            <label>Workgroup Name:</label>
+                            <input matInput [(ngModel)]="model.groupName" name="groupName" required="required"/>
+                        </mat-form-field>
+                        <mat-form-field class="form-group col-lg-12  pad-left-md">
+                            <label>Workgroup Description:</label>
+                            <textarea matInput rows="3" [(ngModel)]="model.description" name="description" required="required"></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row" >
+                           <div class="col-lg-12">
+                            <div class="card mb-3">
+                                <div class="card-header tile-header bg-slategray">Assign Role</div>
+                                <div class="card-body">
+                                    <div class="row m-20">
+                                        <div class="checkbox col-sm-4" *ngFor="let role of roles">
+                                            <input type="checkbox" value="{{role.roleId}}" [(ngModel)]="role.checked" [name]="role.roleId" />
+                                            <label>{{role.roleName}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                        </div>
+                        <div class="col-sm-4 pull-left">
+                            <input [disabled]="!workgroupsForm.form.valid" type="submit" value="Submit" class="btn btn-success btn-lg float-left text-white">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+</div>

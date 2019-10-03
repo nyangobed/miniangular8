@@ -1,0 +1,14 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'View Geographical Region'" [icon]="'fa-eye'"></app-page-header>
+        <section class="tile">
+                <button type="submit"  mat-raised-button color="primary" >
+                        <a routerLink="javascript:void(0)" (click)="goBack()">Return </a>
+                        <i class="fa fa-arrow-circle-left"></i>
+                </button>
+            <div class="tile-body row">
+                <app-viewentity [viewparam]="viewparam" [title]="'Geographical Region View'" [subtitle]="model.regionName"></app-viewentity>
+            </div>
+        </section>
+    </div>
+</div>

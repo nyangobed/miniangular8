@@ -1,0 +1,38 @@
+<!-- <h2 mat-dialog-title>Edit Device</h2>
+<form (ngSubmit)="updateDevice(upDForm)" #upDForm="ngForm"  role="form">
+    <mat-dialog-content> 
+        <div class="modal-body">
+            <div class="row">
+                <mat-form-field class="col-lg-12">
+                    <label >Manufacturer: </label>
+                    <mat-select [(value)]="model.makeId" placeholder="Manufacturer" (selectionChange)= "loadModels()" name="makeId" required>
+                        <mat-option  *ngFor="let make of makes" [value]="make.makeId">{{make.make}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="col-lg-12">
+                    <label >Select Device Model: </label>
+                    <mat-select placeholder="Select Device Model" [(ngModel)]="model.modelId" name="device" data-parsley-trigger="change" required>
+                        <mat-option *ngFor="let devicemodel of devicemodels" [value]="devicemodel.modelId">{{ devicemodel.model }}</mat-option>
+                    </mat-select>                                
+                </mat-form-field>                                    
+            </div>
+            <div class="row">
+                <label >Select Estate: </label>
+                <tree-select name="simpleSelect" [items]="items" idField="unitItemId" textField="name" childrenField="children" [(ngModel)]="simpleSelected"
+                             required=true #simpleSelect="ngModel" [filterPlaceholder]="FilterPlaceholder" [allowFilter]="ShowFilter" [disabled]="Disabled"
+                             [allowParentSelection]="AllowParentSelection" style="display: block;"></tree-select>
+                <div *ngIf="simpleSelect.errors && (simpleSelect.dirty || simpleSelect.touched)" class="alert alert-danger">
+                    <div [hidden]="!simpleSelect.errors.required">Estate is required</div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="row col-md-12">
+            <button mat-button type="button" class="btn btn-secondary mr-10" mat-dialog-close>Close</button>     
+            <button type="submit" [disabled]="!upDForm.form.valid" class="btn btn-success">Save</button>
+        </div>
+    </mat-dialog-actions>
+</form> -->

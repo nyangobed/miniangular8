@@ -1,0 +1,39 @@
+<div [@routerTransition]>    
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'My Profile'" [icon]="'fa-eye'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <app-viewentity [viewparam]="viewparam" [title]="'My Profile Details'" [subtitle]="model.fullName"></app-viewentity>
+                <div class="clearfix"></div>
+                <hr/>
+                <h4>Change Password</h4>
+                <hr/>
+                <form (ngSubmit)="changePass(changePasses)" #changePasses="ngForm" role="form">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Old Password:</label>
+                            <input type="password" [(ngModel)]="change.oldPassword" name="oldPassword" required="required"  class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>New Password:</label>
+                            <input type="password" [(ngModel)]="change.newPassword" name="newPassword" required="required"  class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Confirm Password:</label>
+                            <input type="password" [(ngModel)]="change.confirmPassword" name="confirmPassword" required="required"  class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12 pull-right">
+                            <button [disabled]="!changePasses.form.valid" type="submit" class="btn btn-success">Change Password</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

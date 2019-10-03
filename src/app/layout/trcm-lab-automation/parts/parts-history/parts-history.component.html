@@ -1,0 +1,36 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Parts History'" [icon]="'fa-edit'">
+
+        </app-page-header>
+        <section class="tile">
+            <button type="save" class="btn btn-secondary">
+                <a routerLink="javascript:void(0)" (click)="goBack()">Back </a>
+            </button>
+            <div class="tile-body">
+                <app-delete-component [addLabel]="'Add Parts'" [addLink]="'/trcm-lab-automation/parts/parts-onboarding'"
+                    [addLink]="'master-data/bank-regions/create-bank-regions'" [approveLabel]="'Approve Parts'"
+                    [approveLink]="'/trcm-lab-automation/parts/approve-parts'" [deleteLabel]="'Delete Parts'"
+                    [endpoint]="'atlas/repair'">
+
+                </app-delete-component>
+                <table datatable [dtOptions]="dtOptions"  class="table table-striped table-bordered row-border hover">
+                    <thead>
+                        <tr>
+                            <th class="select-checkbox" style="text-align :center"><input type="checkbox"
+                                    class="select-all-checkbox border-#{000000}" />
+                            </th>
+                            <th>Serial Number</th>
+                            <th>Part  Number</th>
+                            <th>IMEI Number</th>
+                            <th>Device Owner</th>
+                            <th>Part Model</th>  
+                            <th>Part Name</th> 
+                            <th>Description</th> 
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

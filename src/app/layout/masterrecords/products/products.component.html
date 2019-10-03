@@ -1,0 +1,24 @@
+<div [@routerTransition]> 
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Business Units'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body"> 
+                <app-delete-component [addLabel]="'Add Business Units'" [addLink]="'masterrecords/createproducts'" [approveLabel]="'Approve Business Units'" [approveLink]="'masterrecords/approveproducts'" [deleteLabel]="'Delete Business Units'" [endpoint]="'products'"></app-delete-component>
+                <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                       <thead>
+                        <tr>
+                            <th class="select-checkbox" style="text-align :center"><input type="checkbox" class="select-all-checkbox border-#{000000}" /></th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Created</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                            <th>Action Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

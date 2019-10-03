@@ -1,0 +1,82 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Add Currency'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Currency'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        <div class="alert alert-cyan">
+                            <strong>Heads up!</strong><a href="https://www.ibm.com/support/knowledgecenter/en/SSZLC2_7.0.0/com.ibm.commerce.payments.developer.doc/refs/rpylerl2mst97.htm" target="_blank" class="alert-link">A list of ISO 4217 currency codes follows. Use these values with the CURRENCY parameter</a>
+                        </div>
+                    </div>
+                </div>
+                <form (ngSubmit)="onCreateCurrency(createForm)" #createForm="ngForm" role="form">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Currency Name</label>
+                            <input class="form-control borders" [(ngModel)]="model.currencyName" type="text"
+                                   name="currencyName"
+                                   required="required"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Currency Code Alpha</label>
+                            <input class="form-control borders" type="text" [(ngModel)]="model.currencyCode"
+                                   name="currencyCode"
+                                   required="required"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Currency Code Numeric</label>
+                            <input class="form-control borders" type="number" [(ngModel)]="model.numericValue"
+                                   name="numericValue"
+                                   required="required"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Currency Code Name</label>
+                            <input class="form-control borders" type="text" [(ngModel)]="model.currencyCodeName"
+                                   name="currencyCodeName"
+                                   required="required"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Currency Symbol</label>
+                            <input class="form-control borders" type="text" [(ngModel)]="model.currencySymbol"
+                                   name="currencySymbol"
+                                   required="required"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Decimal Value</label>
+                            <input class="form-control borders" type="number" [(ngModel)]="model.decimalValue"
+                                   name="decimalValue"
+                                   required="required"/>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-8">
+                        <button *ngIf="!isUpdate" [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success pull-right">Save Currency
+                        </button>
+                        <button *ngIf="isUpdate" [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success pull-right">Update Currency
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

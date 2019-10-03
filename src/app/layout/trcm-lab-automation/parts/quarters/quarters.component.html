@@ -1,0 +1,39 @@
+<div [@routerTransition]>
+  <div class="page page-dashboard">
+    <app-page-header *ngIf="!isUpdate" [heading]="'Orders'" [icon]="'fa-edit'"></app-page-header>
+    <app-page-header *ngIf="isUpdate" [heading]="'Orders'" [icon]="'fa-edit'"></app-page-header>
+      <div class="panel panel-default">
+        <div class="panel-body">
+         
+            <section class="tile">
+              <div class="tile-body">
+                  <form *ngIf="upload" role="form" [formGroup]="upload" >
+                  <div class="form-group col-md-3">
+                    <label>YEAR  *</label>
+                    <input type="text" class="form-control" name="Year" pattern="[0-9 ]*"
+                   formControlName="Year" class="form-control" placeholder="year"
+                      required>            
+                      <!-- <div *ngIf="(f.Year.errors && f.Year.touched)||submitted ">
+                          <div *ngIf="f.Year.errors.required" class="validation-error">Please
+                              choose year</div>
+                      </div> -->
+                    <br>
+                  </div> 
+                  <br>       
+                  <div class="col-lg-8">
+                      <button type="submit" class="btn btn-primary" [disabled]="!upload.valid" (click)="Onsubmit()">First quarter</button>
+                      <button type="submit" class="btn btn-primary" [disabled]="!upload.valid">Second quarter</button>
+                      <button type="submit" class="btn btn-primary" [disabled]="!upload.valid">Third quarter</button>
+                      <button type="submit" class="btn btn-primary" [disabled]="!upload.valid">Fourth quarter</button>
+                          <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" >
+                                  <a routerLink="javascript:void(0)" (click)="goBack()">back </a>
+                          </button>
+                  </div>
+            
+                </form>
+              </div>
+            </section>       
+          </div>
+        </div>
+      </div>
+  </div>

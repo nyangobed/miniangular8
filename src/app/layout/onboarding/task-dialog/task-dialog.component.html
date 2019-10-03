@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Add New Task</h2>
+<form (ngSubmit)="saveTasks(checkerForm)" #checkerForm="ngForm"  role="form">
+    <mat-dialog-content> 
+        <div class="modal-body">
+            <div class="row">
+                <fieldset class="form-group">
+                    <label>Download Type: </label>
+                    <mat-radio-group (change)="alterDownloadType()" [(ngModel)]="task.downloadType" name="downloadType" required>
+                        <mat-radio-button value="App Only">App Only</mat-radio-button>
+                        <mat-radio-button value="App and Files">App and Files</mat-radio-button>
+                        <mat-radio-button value="Files Only">Files Only</mat-radio-button>
+                    </mat-radio-group>
+                </fieldset>
+            </div>
+            <div class="row">
+                <mat-form-field class="col-md-12" *ngIf="showAppSelect">
+                    <label>Select App Version: </label>
+                    <mat-select placeholder="Select App Version" [(ngModel)]="task.appId" name="appId" required>
+                        <mat-option *ngFor="let app of apps" [value]="app.appId">{{ app.appName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <fieldset class="form-group" *ngIf="showDropandDrag">
+                    <file-drop headertext="Drop files here" (onFileDrop)="dropped($event)" 
+                               (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                        <span></span>
+                    </file-drop>
+                    <div class="upload-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Files List</th>
+                                </tr>
+                            </thead>
+                            <tbody class="upload-name-style">
+                                <tr *ngFor="let item of files; let i=index">
+                                    <td><strong>{{ item.relativePath }}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="row col-md-12">
+            <button mat-button type="button" class="btn btn-secondary mr-10" mat-dialog-close>Close</button>     
+            <button type="submit" [disabled]="!checkerForm.form.valid" class="btn btn-success">Save</button>
+        </div>
+    </mat-dialog-actions>
+</form>

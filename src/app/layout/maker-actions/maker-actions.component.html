@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-lg-2">            
+    </div>
+    <div class="col-lg-10">        
+        <button [disabled] = "(selectedIds?.length == 0)" class="btn btn-danger btn-ef btn-ef-3 btn-ef-3c mb-10 mr-20 pull-right" (click)="openDialog()">{{deleteLabel}}<i class="fa fa-remove"></i></button> 
+        <a routerLink ="/{{approveLink}}" class="btn btn-primary btn-ef btn-ef-3 btn-ef-3c mb-10 mr-10 pull-right">{{approveLabel}}</a>  
+        <a *ngIf="confirm" routerLink ="/{{confirmLink}}" class="btn btn-primary btn-ef btn-ef-3 btn-ef-3c  mr-20 mb-10 pull-right">{{confirmLabel}}<i class="fa fa-plus"></i></a>
+        <a routerLink ="/{{addLink}}" class="btn btn-success btn-ef btn-ef-3 btn-ef-3c  mr-20 mb-10 pull-right">{{addLabel}}<i class="fa fa-plus"></i></a>
+    </div>
+</div> 
+

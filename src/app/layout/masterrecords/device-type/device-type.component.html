@@ -1,0 +1,32 @@
+<div [@routerTransition]>    
+    <div class="page page-forms-wizard">  
+        <app-page-header [heading]="'Device Type'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <form (ngSubmit)="save(typeForm)" #typeForm="ngForm" role="form">
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="type">Device Type: </label>
+                            <input placeholder="Type" maxlength="100" name="type" id="type" required="" [(ngModel)]="model.type" #type="ngModel" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="Description">Description: </label>
+                            <textarea maxlength="500" rows="3" placeholder="Description" name="description" id="description" [(ngModel)]="model.description" type="text" #description="ngModel" class="form-control"  ></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="btn-group pull-right">
+                            <button mat-raised-button type="reset" class="btn btn-default">Reset</button> 
+                            <button [disabled]="!typeForm.form.valid" type="submit" class="btn btn-success">Save</button>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

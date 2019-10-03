@@ -1,0 +1,37 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Error Codes'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <a routerLink="javascript:void(0)" (click)="goBack()">
+                <button type="submit" mat-raised-button color="primary"><i class="fa fa-arrow-left"></i> Return</button>
+            </a>
+            <button class="btn btn-success" (click)="downloadFile()"
+                    style="border-radius: 4px; margin-left: 4px;"><i class="fa fa-file-excel-o"></i> Download</button>
+            <div class="tile-body">
+                <app-delete-component [addLabel]="'Add Error Codes'"
+                    [addLink]="'common-modules/master-data/error-codes/create-error-codes'"
+                    [approveLabel]="'Approve Error Codes'"
+                    [approveLink]="'common-modules/master-data/error-codes/approve-error-codes'"
+                    [approveLabel]="'View Region'"
+                    [approveLink]="'common-modules/master-data/geographical-regions/view-error-codes'"
+                    [deleteLabel]="'Delete Error Code'" [endpoint]="'atlas/device_error'"></app-delete-component>
+                <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered row-border hover">
+                    <thead>
+                        <tr>
+                            <th class="select-checkbox" style="text-align :center"><input type="checkbox"
+                                    class="select-all-checkbox border-#{000000}" /></th>
+                            <th>Code</th>
+                            <th>Code Name</th>
+                            <th>Description</th>
+                            <th>Level</th>
+                            <th>Created On</th>
+                            <th>Action Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

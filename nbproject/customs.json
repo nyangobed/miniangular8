@@ -1,0 +1,11 @@
+{
+    "elements": {},
+    "attributes": {
+        "(click)": {},
+        "(ngsubmit)": {
+            "context": "form"
+        },
+        "#makeform": {},
+        "[@routertransition]": {}
+    }
+}

@@ -1,0 +1,128 @@
+<div [@routerTransition]>
+  <div class="page page-dashboard">
+      <app-page-header *ngIf="!isUpdate" [heading]="'Create Devices'" [icon]="'fa-edit'"></app-page-header>
+      <app-page-header *ngIf="isUpdate" [heading]="'Update Devices'" [icon]="'fa-edit'"></app-page-header>
+      <h6>Customer Details</h6>
+      <p>
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <div>
+                      <section class="tile">
+                          <div class="tile-body">
+                              <!-- <....................................Devices onboarding..................................> -->
+                              <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" novalidate>
+
+                                  <div class="form-group col-md-6">
+                                      <label>Customer Name *</label>
+                                      <input type="text" class="form-control" name="name" pattern="[a-zA-Z ]*"
+                                          [(ngModel)]="customers.name" #name="ngModel" placeholder="Customer Name"
+                                          required />
+                                      <div *ngIf="name.errors?.required && name.touched" class="validation-error">
+                                          Field is required</div>
+                                      <div *ngIf="name.errors?.pattern && name.touched" class="validation-error">
+                                          Please enter a valid name</div>
+                                  </div>
+
+                                  <div class="form-group col-md-6">
+                                      <label>IMEI Number *</label>
+                                      <input type="text" class="form-control" name="imeinumber" 
+                                          [(ngModel)]="customers.imeinumber"
+                                          #imeinumber="ngModel" placeholder="imei number" required 
+                                         />
+                                      <div *ngIf="imeinumber.errors?.required && imeinumber.touched"
+                                          class="validation-error">Field is required</div>
+                                      <!-- <div *ngIf="imeinumber.errors?.patternn && imeinumber.touched"
+                                          class="validation-error">Please enter numbers Only</div> -->
+                                      <br>
+                                  </div>
+                                  <br>
+                               
+                                  <div class="form-group col-md-6">
+                                    <label>Device Models *</label>
+                                    <input type="text" class="form-control" name="deviceModels" 
+                                        [(ngModel)]="customers.deviceModels"
+                                        #deviceModels="ngModel" placeholder="device Models" required 
+                                       />
+                                    <div *ngIf="deviceModels.errors?.required && deviceModels.touched"
+                                        class="validation-error">Field is required</div>
+                                    <!-- <div *ngIf="imeinumber.errors?.patternn && imeinumber.touched"
+                                        class="validation-error">Please enter numbers Only</div> -->
+                                  
+                                </div>
+
+                                  <div class="form-group col-md-6">
+                                      <label>Manufacturer *</label>
+                                      <input type="text" class="form-control" name="manufacturer"
+                                          pattern="[a-zA-Z ]*" [(ngModel)]="customers.manufacturer"
+                                          #manufacturer="ngModel" placeholder="manufacturer" required>
+                                      <div *ngIf="manufacturer.errors?.required && manufacturer.touched"
+                                          class="validation-error">Field is required</div>
+                                      <div *ngIf="manufacturer.errors?.pattern && manufacturer.touched"
+                                          class="validation-error">Please enter a valid  manufacturer </div>
+                                      <br>
+                                  </div> 
+                                  <br>
+                                           
+                                  <div class="form-group col-md-6">
+                                    <label>Part Number *</label>
+                                    <input type="text" class="form-control" name="partnumber" 
+                                        [(ngModel)]="customers.partnumber"
+                                        #partnumber="ngModel" placeholder="part number" required 
+                                       />
+                                    <div *ngIf="partnumber.errors?.required && partnumber.touched"
+                                        class="validation-error">Field is required</div>
+                                    <!-- <div *ngIf="imeinumber.errors?.patternn && imeinumber.touched"
+                                        class="validation-error">Please enter numbers Only</div> -->
+                                   
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                  <label>Seller *</label>
+                                  <input type="text" class="form-control" name="seller" 
+                                      [(ngModel)]="customers.seller"
+                                      #seller="ngModel" placeholder="seller" required 
+                                     />
+                                  <div *ngIf="seller.errors?.required && seller.touched"
+                                      class="validation-error">Field is required</div>
+                                  <!-- <div *ngIf="imeinumber.errors?.patternn && imeinumber.touched"
+                                      class="validation-error">Please enter numbers Only</div> -->
+                                  <br>
+                              </div>
+                              <br>
+                              <div class="form-group col-md-6">
+                                <label>Serial Number *</label>
+                                <input type="text" class="form-control" name="serialnumber" 
+                                    [(ngModel)]="customers.serialnumber"
+                                    #serialnumber="ngModel" placeholder="serialnumber" required 
+                                   />
+                                <div *ngIf="serialnumber.errors?.required && serialnumber.touched"
+                                    class="validation-error">Field is required</div>
+                                <!-- <div *ngIf="imeinumber.errors?.patternn && imeinumber.touched"
+                                    class="validation-error">Please enter numbers Only</div> -->
+                                <br>
+                            </div>
+                                
+                                  
+                                 
+                                  <div>
+                                      <br>
+                                      <div class="col-lg-8">
+                                          <button *ngIf="!isUpdate" [disabled]="!customerForm.form.valid"
+                                              type="submit" class="btn btn-success ">Save</button>
+                                          <button *ngIf="isUpdate" type="submit" class="btn btn-success ">Update
+                                              Devices </button>
+                                          <button [disabled]="!customerForm.form.valid" type="reset"
+                                              class="btn btn-warning ">Reset </button>
+                                              <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" >
+                                                      <a routerLink="javascript:void(0)" (click)="goBack()">back </a>
+                                              </button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+          </div>
+  </div>
+</div>

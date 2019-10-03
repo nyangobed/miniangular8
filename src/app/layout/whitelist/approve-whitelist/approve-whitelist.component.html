@@ -1,0 +1,24 @@
+<div [@routerTransition]>    
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Approve Whitelist (Shipped)'" [icon]="'fa-check-square'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <app-checker-actions [endpoint] = "'device/whitelist'"></app-checker-actions>
+                <table id="checker-table" datatable [dtOptions]="dtOptions" class="row-border hover">
+                       <thead>
+                        <tr>
+                            <th class="select-checkbox" style="text-align :center"><input type="checkbox" class="select-all-checkbox border-#{000000}" /></th>
+                            <th>Serial Number</th>
+                            <th>Model</th>
+                            <th>Action</th>
+                            <th>Action Status</th>
+                            <th>Creation Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

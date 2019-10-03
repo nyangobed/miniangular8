@@ -1,0 +1,10 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header [heading]="'Released Devices Reports'" [icon]="'fa-check-square'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">
+                <app-device-list-template [actionStatus]="'Release'"></app-device-list-template>
+            </div>
+        </section>
+    </div>
+</div>

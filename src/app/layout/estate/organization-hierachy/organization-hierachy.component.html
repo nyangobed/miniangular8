@@ -1,0 +1,62 @@
+<div [@routerTransition]>
+    <div class="page page-ui-tree">
+        <app-page-header [heading]="'Organization Hierarchy'" [icon]="'fa-check-square'"></app-page-header>
+        <div class="row">
+            <div class="col-md-4">
+                <section class="tile">
+                    <div class="tile-header dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Business Units</strong> Selection</h1>                    
+                    </div>
+                    <div class="tile-body">
+                        <div class="row m-20">
+                            <mat-form-field class="col-md-12">
+                                <label>Select Business Unit</label>
+                                <mat-select placeholder="Select Business Units" [(ngModel)]="selectedValue" name="product" (change)="updateContent()" required>
+                                    <mat-option *ngFor="let product of products" [value]="product.productId">{{ product.productName }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-8">
+                <section class="tile">
+                    <div class="tile-header dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Hierarchy</strong> View</h1>                    
+                    </div>
+                    <div class="tile-body">
+                        <div class="row text-center">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <span *ngFor="let unit of businessUnits; let i = index">
+                                        <div class="col-md-7">
+                                            <h4>Level {{unit.levelNo}} - {{unit.unitName}}</h4>
+                                            <p *ngIf="i+1!=businessUnits?.length"><i class="fa fa-arrow-down"></i></p>
+                                        </div>
+                                        <div class="col-md-5">   
+                                            <i *ngIf="unit.actionStatus == 'Unapproved'" class='fa fa-thumbs-down pointer mr-20 pull-right mt-20' title='Decline'  (click)="perfomrAction(unit,'Decline')"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <i *ngIf="unit.actionStatus == 'Unapproved'" class='fa fa-thumbs-up pointer mr-20 pull-right mt-20' title='Approve' (click)="perfomrAction(unit,'Approve')"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <i class='fa fa-edit pointer mr-20 pull-right mt-20' title='Edit' (click)="editBusinessUnit(unit)"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </div>
+
+                                    </span> 
+                                </div>
+                                <div class="row">
+                                    <mat-divider></mat-divider>
+                                    <h4 *ngIf="businessUnits?.length==0">
+                                        No Hierarchy found
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="button-row pull-right pull-bottom mr-10">
+                                    <button mat-fab color="primary" (click)="addBusinessUnit()"><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

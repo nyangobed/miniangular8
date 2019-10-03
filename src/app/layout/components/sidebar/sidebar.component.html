@@ -1,0 +1,307 @@
+<aside id="sidebar" class="aside-fixed scheme-black">
+    <div id="sidebar-wrap">
+        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+            <div class="panel-group slim-scroll" role="tablist" style="overflow-y: scroll; width: auto; height: 100%;">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab">
+                        <div class="panel-title">
+                            <a routerLink="/trcm-lab-automation/components/dashboard">
+                                <span class="text-white">Dashboard </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel-heading" role="tab" *ngxPermissionsOnly="['VIEW_WORKGROUP','UPDATE_WORKGROUP','APPROVE_WORKGROUP','DELETE_WORKGROUP',
+                    'CREATE_WORKGROUP','CREATE_USER','DELETE_USER','UPDATE_USER','APPROVE_USER','VIEW_USER']">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#userNav" class="collapsed">
+                                <span class="text-white">User Management</span> <i class="fa fa-angle-up"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="userNav" class="panel-collapse collapse" role="tabpanel">
+                        <div class="panel-body">
+                            <ul id="navigation" class="navigation-ver">
+                                <li>
+                                    <a routerLink="/common-modules/userroles"><i class="fa fa-caret-right"></i>
+                                        <span>Roles</span></a>
+                                </li>
+                                <li
+                                    *ngxPermissionsOnly="['VIEW_WORKGROUP','UPDATE_WORKGROUP','APPROVE_WORKGROUP','DELETE_WORKGROUP','CREATE_WORKGROUP']">
+                                    <a routerLink="/common-modules/workgroups"><i class="fa fa-caret-right"></i>
+                                        <span>Workgroup</span></a>
+                                </li>
+                                <li
+                                    *ngxPermissionsOnly="['VIEW_USER','DELETE_USER','UPDATE_USER','APPROVE_USER','CREATE_USER']">
+                                    <a routerLink="/common-modules/systemusers/listusers"><i
+                                            class="fa fa-caret-right"></i>
+                                        <span>Users</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-heading" role="tab"
+                        *ngxPermissionsOnly="['VIEW_CUSTOMERS','VIEW_MANUFACTURERS','CREATE_CUSTOMERS',
+                    'DELETE_CUSTOMERS','UPDATE_CUSTOMERS','APPROVE_CUSTOMERS','DELETE_MANUFACTURERS','CREATE_MANUFACTURERS','UPDATE_MANUFACTURERS',
+                    'APPROVE_MANUFACTURERS','UPDATE_DEVICES','DELETE_DEVICES','CREATE_DEVICES','VIEW_DEVICES','APPROVE_DEVICES']">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#OnboardingNav" class="collapsed">
+                                <span class="text-white">Onboarding</span> <i class="fa fa-angle-up"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="OnboardingNav" class="panel-collapse collapse" role="tabpanel">
+                        <div class="panel-body">
+                            <ul id="navigation" class="navigation-ver">
+                                <li *ngxPermissionsOnly="['VIEW_CUSTOMERS',
+                                'UPDATE_CUSTOMERS',
+                                'APPROVE_CUSTOMERS',
+                                'CREATE_CUSTOMERS',
+                                'DELETE_CUSTOMERS']"><a
+                                        routerLink="/trcm-lab-automation/onboarding/customer-onboarding"><i
+                                            class="fa fa-caret-right"></i> Customers</a></li>
+                                <li *ngxPermissionsOnly="['VIEW_MANUFACTURERS',
+                                'APPROVE_MANUFACTURERS',
+                                'DELETE_MANUFACTURERS',
+                                'UPDATE_MANUFACTURERS',
+                                'CREATE_MANUFACTURERS']"><a
+                                        routerLink="/trcm-lab-automation/onboarding/manufacturer-onboarding"><i
+                                            class="fa fa-caret-right"></i> Manufacturers</a></li>
+                                <li *ngxPermissionsOnly="['UPDATE_DEVICES',
+                                'DELETE_DEVICES',
+                                'CREATE_DEVICES',
+                                'VIEW_DEVICES',
+                                'APPROVE_DEVICES']"><a
+                                        routerLink="/trcm-lab-automation/onboarding/device-onboarding"><i
+                                            class="fa fa-caret-right"></i> Devices</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-heading" role="tab" *ngxPermissionsOnly="['CREATE_PARTHISTORY']">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#inventoryNav" class="collapsed">
+                                <span class="text-white">Inventory Management</span> <i class="fa fa-angle-up"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="inventoryNav" class="panel-collapse collapse" role="tabpanel">
+                        <div class="panel-body">
+                            <ul id="navigation" class="navigation-ver">
+                                <li><a routerLink="/trcm-lab-automation/onboarding/ordering"><i
+                                            class="fa fa-caret-right"></i> Ordering
+                                    </a></li>
+                                <li class="dropdown">
+                                    <a role="button" tabindex="0"><i class="fa fa-caret-right"></i> <span>Quarterly
+                                            Parts</span><i class="fa fa-plus"></i></a>
+                                    <ul>
+
+                                        <li><a routerLink="/trcm-lab-automation/parts/firstquarter"><i
+                                                    class="fa fa-caret-right"></i>First Quarter</a></li>
+                                        <li><a routerLink="/trcm-lab-automation/parts/secondquarter"><i
+                                                    class="fa fa-caret-right"></i>Second Quarter</a></li>
+                                        <li><a routerLink="/trcm-lab-automation/parts/thirdquarter"><i
+                                                    class="fa fa-caret-right"></i>Third Quarter</a></li>
+                                        <li><a routerLink="/trcm-lab-automation/parts/fourthquarter"><i
+                                                    class="fa fa-caret-right"></i> Fourth Quarter</a></li>
+                                    </ul>
+                                </li>
+                                <li><a routerLink="/trcm-lab-automation/parts/stock"><i class="fa fa-caret-right"></i>
+                                        Stock Management
+                                    </a></li>
+                                <li><a routerLink="/trcm-lab-automation/components/reordering"><i
+                                            class="fa fa-caret-right"></i>
+                                        Reordering
+                                    </a></li>
+                                <li><a routerLink="/trcm-lab-automation/components/pendingorders"><i
+                                            class="fa fa-caret-right"></i>
+                                        Receieved Orders
+                                    </a></li>
+                                <li><a routerLink="/trcm-lab-automation/parts/partsrequstion"><i
+                                            class="fa fa-caret-right"></i> Parts Requstion
+                                    </a></li>
+                                <li><a routerLink="/trcm-lab-automation/parts/partsIssued"><i
+                                            class="fa fa-caret-right"></i> Issue Parts
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-heading" role="tab" *ngxPermissionsOnly="['CREATE_REPAIR',
+                    'VIEW_DELIVERY','VIEW_REPAIR',
+                    'VIEW_BATCH','VIEW_DEVICEERRORS','VIEW_SHIPPEDREPAIR']">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#repairNav" class="collapsed">
+                                <span class="text-white">Repair Management</span> <i class="fa fa-angle-up"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="repairNav" class="panel-collapse collapse" role="tabpanel">
+                        <div class="panel-body">
+                            <ul id="navigation" class="navigation-ver">
+                                <li>
+                                    <a routerLink="/trcm-lab-automation/components/receiving"><i
+                                            class="fa fa-caret-right"></i> <span>Receiving</span></a>
+                                </li>
+                                <li>
+                                    <a routerLink="/trcm-lab-automation/components/diagnosis"><i
+                                            class="fa fa-caret-right"></i> <span>Diagnosis</span></a>
+                                </li>
+                                <li>
+                                    <a routerLink="/trcm-lab-automation/components/assigning"><i
+                                            class="fa fa-caret-right"></i> <span>Assigning</span></a>
+                                </li>
+                                <li *ngxPermissionsOnly="['VIEW_REPAIR']">
+                                    <a routerLink="/trcm-lab-automation/components/repair"><i
+                                            class="fa fa-caret-right"></i> <span>Repair</span></a>
+                                </li>
+                                <li>
+                                    <a routerLink="/trcm-lab-automation/components/technician"><i
+                                            class="fa fa-caret-right"></i> <span>Technician</span></a>
+                                </li>
+                                <li>
+                                    <a routerLink="/trcm-lab-automation/components/shipped"
+                                        *ngxPermissionsOnly="['VIEW_SHIPPEDREPAIR']"><i class="fa fa-caret-right"></i>
+                                        <span>Shipping</span></a>
+                                </li>
+                                <li *ngxPermissionsOnly="['VIEW_DELIVERY']">
+                                    <a routerLink="/trcm-lab-automation/components/delivery"><i
+                                            class="fa fa-caret-right"></i> <span>Delivery</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-heading" role="tab"
+                        *ngxPermissionsOnly="['CREATE_REPAIR',
+                    'VIEW_DELIVERY','VIEW_REPAIR',
+                    'VIEW_BATCH','VIEW_DEVICEERRORS','VIEW_SHIPPEDREPAIR','CREATE_REGIONS','APPROVE_DEVICEERRORS','UPDATE_REGIONS']">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#masterNav" class="collapsed">
+                                <span class="text-white">Master Records</span> <i class="fa fa-angle-up"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="masterNav" class="panel-collapse collapse" role="tabpanel">
+                        <div class="panel-body">
+                            <ul id="navigation" class="navigation-ver">
+                                <li class="dropdown">
+                                    <a role="button" tabindex="0"><i class="fa fa-caret-right"></i> <span>Master
+                                            Records</span><i class="fa fa-plus"></i></a>
+                                    <ul>
+                                        <li *ngxPermissionsOnly="['VIEW_DEVICEERRORS']"><a
+                                                routerLink="/common-modules/master-data/error-codes"><i
+                                                    class="fa fa-caret-right"></i>Error Codes</a></li>
+                                        <li *ngxPermissionsOnly="['CREATE_REGIONS']"><a
+                                                routerLink="/trcm-lab-automation/onboarding/device-models"><i
+                                                    class="fa fa-caret-right"></i> POS Models</a></li>
+                                        <li *ngxPermissionsOnly="['CREATE_PARTHISTORY']"><a
+                                                routerLink="/trcm-lab-automation/parts/partsmaster"><i
+                                                    class="fa fa-caret-right"></i> Parts Min/Max Config</a></li>
+                                        <li *ngxPermissionsOnly="['CREATE_PARTHISTORY']"><a
+                                                routerLink="/trcm-lab-automation/parts"><i
+                                                    class="fa fa-caret-right"></i>
+                                                Parts
+                                            </a></li>
+                                        <li><a routerLink="/common-modules/master-data/geographical-regions"><i
+                                                    class="fa fa-caret-right"></i>Regions</a></li>
+                                        <li><a routerLink="/common-modules/master-data/bank-regions"><i
+                                                    class="fa fa-caret-right"></i>Bank Region</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-heading" role="tab"
+                        *ngxPermissionsOnly="['CREATE_REPAIR',
+                    'VIEW_DELIVERY','VIEW_REPAIR',
+                    'VIEW_BATCH','VIEW_DEVICEERRORS','VIEW_SHIPPEDREPAIR','CREATE_REGIONS','APPROVE_DEVICEERRORS','UPDATE_REGIONS']">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#sidebarNav" class="collapsed">
+                                <span class="text-white">System Setup</span> <i class="fa fa-angle-up"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="sidebarNav" class="panel-collapse collapse" role="tabpanel">
+                        <div class="panel-body">
+                            <ul id="navigation" class="navigation-ver">
+                                <li class="dropdown">
+                                    <a role="button" tabindex="0"><i class="fa fa-caret-right"
+                                            *ngxPermissionsOnly="['CREATE_REGIONS']"></i> <span>System
+                                            Configuration</span><i class="fa fa-plus"></i></a>
+                                    <ul>
+                                        <li><a routerLink="/configuration/system"><i class="fa fa-caret-right"></i>
+                                                System Configuration</a></li>
+                                        <li><a routerLink="/configuration/system/approve"><i
+                                                    class="fa fa-caret-right"></i> Approve Configuration</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-heading" role="tab" *ngxPermissionsOnly="['CREATE_WORKGROUP']">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#reportNav" class="collapsed">
+                                <span class="text-white">Reports</span> <i class="fa fa-angle-up"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="reportNav" class="panel-collapse collapse" role="tabpanel">
+                        <div class="panel-body">
+                            <ul id="navigation" class="navigation-ver">
+                                <li class="dropdown">
+                                    <a role="button" tabindex="0"><i class="fa fa-caret-right"></i>
+                                        <span>Repair Reports</span><i class="fa fa-plus"></i></a>
+                                    <ul>
+                                        <li>
+                                            <a routerLink="/trcm-lab-automation/components/device-reports"><i
+                                                    class="fa fa-caret-right"></i> <span>Devices Reports</span></a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="/trcm-lab-automation/components/device-history"><i
+                                                    class="fa fa-caret-right"></i> <span>Device History</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a role="button" tabindex="0"><i class="fa fa-caret-right"></i>
+                                        <span>Onboarding</span><i class="fa fa-plus"></i></a>
+                                    <ul>
+                                        <li><a routerLink="/reports/customer-reports"><i
+                                                    class="fa fa-caret-right"></i><span>{{ 'Customer Reports'  }}</span></a>
+                                        </li>
+                                        <li><a routerLink="/reports/manufacturer-reports"><i
+                                                    class="fa fa-caret-right"></i><span>{{ 'Manufacturers Reports'  }}</span></a>
+                                        </li>
+                                        <li><a routerLink="/reports/device-reports"><i
+                                                    class="fa fa-caret-right"></i><span>{{ 'Device Terminals Reports'  }}</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a role="button" tabindex="0"><i class="fa fa-caret-right"></i>
+                                        <span>Inventory Management</span><i class="fa fa-plus"></i></a>
+                                    <ul>
+                                        <li><a routerLink="/trcm-lab-automation/parts/reports"><i
+                                                    class="fa fa-caret-right"></i> <span>
+                                                    {{ 'Inventory Reports ' }}</span> </a>
+                                        </li>
+                                        <li><a routerLink="/trcm-lab-automation/parts/parts-history"><i
+                                                    class="fa fa-caret-right"></i> Parts History</a></li>
+                                    </ul>
+                                </li>
+                                <li><a routerLink="/reports/audit"><i
+                                            class="fa fa-caret-right"></i><span>{{ 'Audit Trails Reports' | translate }}</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slimScrollBar"
+                style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 30px;">
+            </div>
+            <div class="slimScrollRail"
+                style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;">
+            </div>
+
+        </div>
+    </div>
+</aside>

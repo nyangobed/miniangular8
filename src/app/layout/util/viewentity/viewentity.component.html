@@ -1,0 +1,17 @@
+<mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+</mat-card-header>
+<mat-card-content>
+    <mat-divider class="row mb-3"></mat-divider>
+    <div class="row">
+        <div *ngFor="let param of viewparam" class="col-lg-4">
+            <p class="h4">{{param.label | capitalize}}</p>
+            <p class="text-muted" *ngIf="param.label=='creationdate'"> <small>
+                    <td-markdown> >{{param.value |date}}</td-markdown>
+                </small> </p>
+            <p class="text-muted" *ngIf="param.label!='creationdate'"> <em>
+                    <td-markdown> >{{ param.value }}</td-markdown></em> </p>
+        </div>
+    </div>
+</mat-card-content>

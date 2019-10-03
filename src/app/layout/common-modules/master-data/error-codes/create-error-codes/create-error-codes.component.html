@@ -1,0 +1,65 @@
+<div [@routerTransition]>
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Add Error Code'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Error Code'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <a routerLink="javascript:void(0)" (click)="goBack()">
+                <button type="submit" mat-raised-button color="primary">Return</button>
+            </a>
+            <div class="tile-body">
+                <form (ngSubmit)="onCreateErrorCodes(createForm)" #createForm="ngForm" role="form">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Code</label>
+                            <input class="form-control borders" [(ngModel)]="model.code" type="text" name="code"
+                                #code="ngModel" placeholder="Code" required="required" />
+                            <div *ngIf="code.errors?.required && code.touched" class="validation-error">
+                                Field is required</div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Code Name</label>
+                            <input type="text" class="form-control" name="name" [(ngModel)]="model.codeName"
+                                #codeName="ngModel" name="codeName" placeholder="Code Name" required="required" />
+                            <div *ngIf="codeName.errors?.required && codeName.touched" class="validation-error">
+                                Field is required</div>
+                            <br>
+                        </div>
+                        <br>
+                        <div class="form-group col-md-6">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="name" [(ngModel)]="model.description"
+                                #description="ngModel" name="description" placeholder="Description"
+                                required="required" />
+                            <div *ngIf="description.errors?.required && description.touched" class="validation-error">
+                                Field is required</div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Level</label>
+                            <input type="text" class="form-control" name="level" [(ngModel)]="model.level"
+                                #level="ngModel" name="level" placeholder="Level" required="required" />
+                            <div *ngIf="level.errors?.required && level.touched" class="validation-error">
+                                Field is required</div>
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <div class="pull-right">
+                            <button *ngIf="!isUpdate" [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success">Save Error Code
+                            </button>
+                            <button *ngIf="isUpdate" [disabled]="!createForm.form.valid" type="submit"
+                                class="btn btn-success">Update Error code
+                            </button>
+                            <button [disabled]="!createForm.form.valid" type="reset" class="btn btn-warning">Reset
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="tile">
+            <app-upload-error-codes></app-upload-error-codes>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div [@routerTransition]>
+  <div class="page page-dashboard">
+      <app-page-header [heading]="'View stocks Details'" [icon]="'fa-eye'"></app-page-header>
+      <section class="tile">
+          <div class="tile-body row">
+              <app-viewentity [viewparam]="viewparam" [title]="'Stocks Details'" [subtitle]="orders.partnumber"></app-viewentity>
+          </div>
+      </section>
+  </div>
+</div>
+

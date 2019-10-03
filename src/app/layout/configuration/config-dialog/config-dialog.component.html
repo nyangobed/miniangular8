@@ -1,0 +1,25 @@
+<div style="width: 100%;">
+    <form (ngSubmit)="save(updateForm)" #updateForm="ngForm"  role="form">
+        <div class="modal-header">
+            <h4 class="modal-title">Update Configuration</h4>
+            <button type="button" class="close" aria-label="Close" mat-dialog-close>
+                    <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <mat-form-field class="col-lg-12 col-md-12">
+                    <input matInput placeholder="Parameter" maxlength="100" name="parameter" id="parameter" readonly="" [(ngModel)]="config.parameter" />
+                </mat-form-field>
+
+                <mat-form-field class="col-lg-12 col-md-12">
+                    <input matInput placeholder="Value" [attr.type]="config.valueType" maxlength="100" name="value" id="value" [(ngModel)]="config.value" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" mat-dialog-close>Close</button>
+            <button type="submit" [disabled]="!updateForm.form.valid" class="btn btn-success">Update</button>
+        </div>
+    </form>
+</div>

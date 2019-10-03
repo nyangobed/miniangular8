@@ -1,0 +1,33 @@
+<div [@routerTransition]>    
+    <div class="page page-dashboard">
+        <app-page-header *ngIf="!isUpdate" [heading]="'Create Department'" [icon]="'fa-edit'"></app-page-header>
+        <app-page-header *ngIf="isUpdate" [heading]="'Update Department'" [icon]="'fa-edit'"></app-page-header>
+        <section class="tile">
+            <div class="tile-body">                
+                <form (ngSubmit)="onSaveDepartment(createForm)" #createForm="ngForm" role="form">
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Department Name</label>
+                            <input type="text" name="departmentName" required="required" class="form-control borders" [(ngModel)]="model.departmentName" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Department Description</label>
+                            <input [(ngModel)]="model.description" name="description" type="text" required="required" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <button *ngIf="!isUpdate" [disabled]="!createForm.form.valid" type="submit" class="btn btn-success pull-right">Save Department</button>
+                            <button *ngIf="isUpdate" [disabled]="!createForm.form.valid" type="submit" class="btn btn-success pull-right">Update Department</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
