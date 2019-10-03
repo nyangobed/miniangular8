@@ -1,4 +1,4 @@
-# TMS Frontend Portal 
+# Angualr 8 Mini projo
 
 TMS Frontend Portal built using Angular 5 and Bootstrap 4
 
@@ -27,7 +27,7 @@ Provides fast, reliable and extensible starter for the development of Angular pr
 
 In order to start the project use:
 ```bash
-$ git clone http://owori.juma%40tracom.co.ke@192.168.1.151:7990/scm/ufs/tmsfrontend.git
+$ git clone 
 $ cd tmsfrontend
 # install the project's dependencies
 $ npm install
