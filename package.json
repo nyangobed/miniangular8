@@ -46,7 +46,7 @@
     "angular2-wizard": "^0.4.0",
     "body-parser": "^1.19.0",
     "bootstrap-select": "^1.13.10",
-    "chart.js": "^2.7.3",
+    "chart.js": "^2.9.4",
     "cleanup-dependencies": "0.0.6",
     "core-js": "^2.5.1",
     "cors": "^2.8.5",
